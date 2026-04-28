@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,10 +14,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/css/intlTelInput.css">
     <link rel='stylesheet' href='css/style.css'>
     <script src="js/i18n.js" defer></script>
-
-    <!-- PayPal Live Integration -->
-    <script
-        src="https://www.paypal.com/sdk/js?client-id=Afmh7JRqp_D_6qUQKDevMwp_8c9AXz4e7_ns1goOIT0ED1sKwLTiGRMND_a95FG-MzA1X1G9lPJMH8iu&merchant-id=9M3QNDXJ6NAS2&currency=USD"></script>
 
     <style>
         .checkout-container {
@@ -464,85 +460,8 @@
                         </div>
                     </div>
 
-                    <!-- BOOKING REQUEST MODE SELECTION -->
-                    <section class="booking-type">
-                        <h3 class="section-title"><i class="fas fa-concierge-bell" style="color: var(--primary);"></i>
-                            <span>Select Your Booking Type</span>
-                        </h3>
-                        <div class="type-options">
-                            <button class="type-btn active" data-mode="inquiry">
-                                <span class="badge badge-paylater">Pay Later</span>
-                                <span>Check Availability</span>
-                            </button>
-                            <button class="type-btn" data-mode="full">
-                                <span class="badge badge-paynow">Pay Now</span>
-                                <span>Secure Payment</span>
-                            </button>
-                        </div>
-                    </section>
-
-                    <div id="payment-methods-section" class="hidden">
-                        <h3 class="mb-30" data-i18n="checkout_payment_method">Select Payment Method</h3>
-                        <div class="payment-methods">
-                            <label class="payment-option active" data-method="bcel">
-                                <input type="radio" name="payment" value="bcel" checked>
-                                <div class="payment-icon"><i class="fas fa-qrcode"></i></div>
-                                <div class="payment-info">
-                                    <div style="display: flex; align-items: center; gap: 10px;">
-                                        <h4 data-i18n="checkout_bcel_one">BCEL One QR</h4>
-                                    </div>
-                                    <p>Standard in Laos. Instant confirmation.</p>
-                                </div>
-                            </label>
-                            <label class="payment-option" data-method="paypal">
-                                <input type="radio" name="payment" value="paypal">
-                                <div class="payment-icon"><i class="fab fa-paypal"></i></div>
-                                <div class="payment-info">
-                                    <h4 data-i18n="checkout_paypal">PayPal</h4>
-                                    <p>Pay securely with Credit Card or PayPal.</p>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- BCEL QR Preview -->
-                    <div id="qr-section" class="qr-placeholder">
-                        <div class="qr-image" style="width: 250px; height: auto; border: none;">
-                            <img src="images/becel-one -qr.jpeg" alt="BCEL One QR"
-                                style="width: 100%; height: auto; border-radius: 8px;">
-                        </div>
-                        <p><strong>Scan this QR code with your BCEL One app</strong></p>
-                        <p class="text-muted" style="font-size: 0.8rem;">Merchant: KOUN OUTHACHITH MR</p>
-
-                        <div class="upload-receipt-box"
-                            style="margin-top: 25px; padding: 20px; background: #f1f5f9; border-radius: 12px; text-align: left; border: 2px dashed #cbd5e1;">
-                            <h4
-                                style="margin: 0 0 10px 0; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;">
-                                <i class="fas fa-camera" style="color: var(--primary);"></i>
-                                <span>Upload Payment Proof</span>
-                            </h4>
-                            <input type="file" id="receipt-upload" accept="image/*"
-                                style="width: 100%; font-size: 0.85rem;">
-                            <p style="font-size: 0.75rem; color: #64748b; margin: 8px 0 0 0;">Please upload a screenshot
-                                of your successful BCEL transfer.</p>
-                        </div>
-                    </div>
-
-
-
-                    <!-- Real PayPal Buttons Container -->
-                    <div id="paypal-section" class="paypal-button-container">
-                        <div id="paypal-button-root"></div>
-                    </div>
-
                     <button id="main-checkout-btn" class="btn btn-primary btn-xl"
                         style="width: 100%; margin-top: 40px;">Send Booking Inquiry</button>
-
-                    <div class="secure-badge">
-                        <i class="fas fa-lock"></i>
-                        <span data-i18n="checkout_secure_notice">Your payment is processed through secure Lao banking
-                            systems.</span>
-                    </div>
                 </div>
 
                 <div class="checkout-sidebar">
@@ -700,19 +619,7 @@
 
                 if (priceEl && totalEl) {
                     if (priceEl && totalEl) {
-                        const modeOptions = document.querySelectorAll('.type-btn');
-                        const labelDueNow = document.getElementById('label-due-now');
-                        const balanceRow = document.getElementById('balance-row');
-                        const paySection = document.getElementById('payment-methods-section');
-                        const qrPreview = document.getElementById('qr-section');
-                        const checkoutBtn = document.getElementById('main-checkout-btn');
-
                         function updateCalculations() {
-                            const activeBtn = document.querySelector('.type-btn.active');
-                            if (!activeBtn) return;
-                            const mode = activeBtn.getAttribute('data-mode');
-                            const isPayNow = mode === 'full';
-
                             // Price logic
                             let isMilli = selectedPrice.toLowerCase().includes('m');
                             let cleanStr = selectedPrice.replace(/[^\d.]/g, '');
@@ -726,56 +633,21 @@
 
                             const fullTotal = numericPrice * parseInt(selectedGuests);
 
-                            if (!isPayNow) {
-                                labelDueNow.textContent = "Estimated Total";
-                                balanceRow.style.display = 'none';
-                                paySection.style.display = 'none';
-                                qrPreview.style.display = 'none';
-                                checkoutBtn.style.display = 'block';
-                                checkoutBtn.textContent = 'Send Booking Inquiry';
-                                localStorage.setItem('payment_mode', 'inquiry');
-                            } else {
-                                labelDueNow.textContent = "Total Amount Due";
-                                balanceRow.style.display = 'none';
-                                paySection.style.display = 'block';
-                                const activeMethod = document.querySelector('.payment-option.active')?.dataset.method;
-                                qrPreview.style.display = (activeMethod === 'bcel' ? 'block' : 'none');
-                                checkoutBtn.textContent = 'Confirm Payment & Book';
-                                localStorage.setItem('payment_mode', 'full');
-                            }
+                            labelDueNow.textContent = "Estimated Total";
+                            if(balanceRow) balanceRow.style.display = 'none';
+                            
+                            localStorage.setItem('payment_mode', 'inquiry');
 
                             totalEl.textContent = isKip ? (fullTotal).toLocaleString() + unit : unit + fullTotal.toFixed(2);
                             localStorage.setItem('due_now_value', totalEl.textContent);
                         }
-
-                        modeOptions.forEach(opt => {
-                            opt.addEventListener('click', () => {
-                                modeOptions.forEach(o => o.classList.remove('active'));
-                                opt.classList.add('active');
-                                updateCalculations();
-                            });
-                        });
 
                         updateCalculations();
                     }
                 }
             }
 
-            const options = document.querySelectorAll('.payment-option');
-            const qrSection = document.getElementById('qr-section');
-            const paypalSection = document.getElementById('paypal-section');
             const mainCheckoutBtn = document.getElementById('main-checkout-btn');
-
-            options.forEach(option => {
-                option.addEventListener('click', () => {
-                    options.forEach(opt => opt.classList.remove('active'));
-                    option.classList.add('active');
-                    const method = option.getAttribute('data-method');
-                    qrSection.style.display = (method === 'bcel') ? 'block' : 'none';
-                    paypalSection.style.display = (method === 'paypal') ? 'block' : 'none';
-                    mainCheckoutBtn.style.display = (method === 'paypal') ? 'none' : 'block';
-                });
-            });
 
             mainCheckoutBtn.addEventListener('click', async () => {
                 const nameInput = document.getElementById('cust-name');
@@ -800,32 +672,9 @@
                     return;
                 }
 
-                if (mode === 'full') {
-                    const method = document.querySelector('.payment-option.active').getAttribute('data-method');
-                    const receiptInput = document.getElementById('receipt-upload');
-                    if (method === 'bcel' && (!receiptInput.files || receiptInput.files.length === 0)) {
-                        showToast('Payment Proof Needed', 'Please upload your payment screenshot first.', 'warning');
-                        return;
-                    }
-                }
-
                 const overlay = document.getElementById('processing-overlay');
                 overlay.style.display = 'flex';
                 await runAuthSteps();
-
-                const receiptInput = document.getElementById('receipt-upload');
-                if (mode === 'full' && receiptInput && receiptInput.files && receiptInput.files[0]) {
-                    localStorage.setItem('receipt_uploaded', 'true');
-                    const reader = new FileReader();
-                    reader.onloadend = function () {
-                        localStorage.setItem('temp_receipt_base64', reader.result);
-                        sendNotification().then(() => { window.location.href = 'success.html'; });
-                    }
-                    reader.readAsDataURL(receiptInput.files[0]);
-                    return;
-                } else {
-                    localStorage.removeItem('receipt_uploaded');
-                }
 
                 await sendNotification();
 
@@ -936,37 +785,7 @@
                 } catch (e) { console.warn('Notification error:', e); }
             }
 
-            if (window.paypal) {
-                paypal.Buttons({
-                    createOrder: function (data, actions) {
-                        let finalAmount = parseFloat(document.getElementById('summary-total-price').textContent.replace(/[^\d.]/g, ''));
-                        const isKip = localStorage.getItem('selected_product_price').includes('KIP');
-                        if (isKip || finalAmount > 1000) finalAmount = finalAmount / 21000;
-                        if (isNaN(finalAmount) || finalAmount <= 0) finalAmount = 10.00;
-
-                        return actions.order.create({
-                            intent: 'AUTHORIZE',
-                            purchase_units: [{
-                                description: `Booking ${bookingId}: ${selectedName} (Paid Upfront)`,
-                                amount: { currency_code: 'USD', value: finalAmount.toFixed(2) }
-                            }]
-                        });
-                    },
-                    onApprove: function (data, actions) {
-                        document.getElementById('processing-overlay').style.display = 'flex';
-                        return actions.order.authorize().then(async function (authorization) {
-                            await runAuthSteps();
-                            await sendNotification();
-                            window.location.href = 'success.html';
-                        });
-                    },
-                    onError: err => {
-                        console.error('PayPal Error:', err);
-                        showToast('Payment Error', 'Payment failed. Try another method.', 'error');
-                        document.getElementById('processing-overlay').style.display = 'none';
-                    }
-                }).render('#paypal-button-root');
-            }
+            // PayPal removed
         });
     </script>
 </body>
