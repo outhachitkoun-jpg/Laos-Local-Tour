@@ -475,25 +475,7 @@
                         <span>Participants (1)</span>
                         <strong>x1</strong>
                     </div>
-                    <div class="summary-item">
-                        <span>Booking Fee</span>
-                        <strong>$0.00</strong>
                     </div>
-
-                    <div class="summary-total" style="margin-bottom: 10px;">
-                        <span id="label-due-now" data-i18n="checkout_total">Total Amount</span>
-                        <span id="summary-total-price">$45.00</span>
-                    </div>
-
-                    <div id="balance-row"
-                        style="display: none; justify-content: space-between; padding-top: 10px; border-top: 1px dashed #cbd5e1; font-size: 0.9rem; color: #64748b;">
-                        <span>Remaining (Cash)</span>
-                        <strong id="summary-balance">$0.00</strong>
-                    </div>
-
-                    <p style="margin-top: 30px; font-size: 0.85rem; color: var(--text-muted);">
-                        * Prices are in USD and include all local taxes.
-                    </p>
                 </div>
             </div>
         </div>
@@ -633,13 +615,16 @@
 
                             const fullTotal = numericPrice * parseInt(selectedGuests);
 
-                            labelDueNow.textContent = "Estimated Total";
-                            if(balanceRow) balanceRow.style.display = 'none';
+                            const labelDueNow = document.getElementById('label-due-now');
+                            const balanceRow = document.getElementById('balance-row');
+                            
+                            if (labelDueNow) labelDueNow.textContent = "Estimated Total";
+                            if (balanceRow) balanceRow.style.display = 'none';
                             
                             localStorage.setItem('payment_mode', 'inquiry');
 
-                            totalEl.textContent = isKip ? (fullTotal).toLocaleString() + unit : unit + fullTotal.toFixed(2);
-                            localStorage.setItem('due_now_value', totalEl.textContent);
+                            if (totalEl) totalEl.textContent = isKip ? (fullTotal).toLocaleString() + unit : unit + fullTotal.toFixed(2);
+                            if (totalEl) localStorage.setItem('due_now_value', totalEl.textContent);
                         }
 
                         updateCalculations();
