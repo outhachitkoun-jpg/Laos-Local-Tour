@@ -4,354 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout | Laos Dream Destination</title>
-
-    <!-- Fonts & Icons -->
+    <title>Checkout | Laos Local Tour</title>
+    <meta name="description" content="Complete your booking inquiry for Laos Local Tour. Enter traveler information, travel details, and submit your booking request.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Flags & Style -->
-    <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css'>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/css/intlTelInput.css">
-    <link rel='stylesheet' href='css/style.css'>
-    <script src="js/i18n.js" defer></script>
-
-    <style>
-        .checkout-container {
-            padding-top: 140px;
-            padding-bottom: 100px;
-            background: #f8fafc;
-            min-height: 100vh;
-        }
-
-        .checkout-grid {
-            display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 40px;
-            align-items: start;
-        }
-
-        .checkout-main,
-        .checkout-sidebar {
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: 40px;
-            box-shadow: var(--shadow-md);
-        }
-
-        .payment-methods {
-            display: grid;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .payment-option {
-            border: 2px solid #e2e8f0;
-            border-radius: var(--radius-md);
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            cursor: pointer;
-            transition: var(--transition-base);
-            position: relative;
-        }
-
-        .payment-option:hover {
-            border-color: var(--primary-soft);
-            background: var(--primary-light);
-        }
-
-        .payment-option.active {
-            border-color: var(--primary);
-            background: var(--primary-light);
-        }
-
-        .payment-option input {
-            position: absolute;
-            opacity: 0;
-        }
-
-        .payment-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--bg-alt);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
-
-        .payment-info h4 {
-            margin: 0;
-            font-size: 1.1rem;
-            font-family: 'Outfit', sans-serif;
-        }
-
-        .payment-info p {
-            margin: 5px 0 0;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        .summary-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #f1f5f9;
-        }
-
-        .summary-total {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary);
-        }
-
-        .qr-placeholder {
-            margin-top: 30px;
-            padding: 30px;
-            background: white;
-            border: 2px dashed var(--primary-soft);
-            border-radius: var(--radius-md);
-            text-align: center;
-            display: none;
-        }
-
-        .qr-placeholder.active {
-            display: block;
-        }
-
-        .qr-image {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 20px;
-            background: #eee;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-        }
-
-        .paypal-button-container {
-            margin-top: 30px;
-            display: none;
-        }
-
-        .paypal-button-container.active {
-            display: block;
-        }
-
-        .secure-badge {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #059669;
-            font-size: 0.85rem;
-            margin-top: 20px;
-            font-weight: 600;
-        }
-
-        @media (max-width: 991px) {
-            .checkout-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .checkout-container {
-                padding-top: 100px;
-                padding-bottom: 80px;
-            }
-
-            .checkout-container h1 {
-                font-size: 2rem !important;
-                margin-bottom: 25px !important;
-            }
-
-            .checkout-main,
-            .checkout-sidebar {
-                padding: 25px 20px;
-            }
-
-            .checkout-section {
-                padding: 20px;
-                margin-bottom: 20px;
-            }
-
-            .checkout-section h3 {
-                font-size: 1.15rem;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr !important;
-                gap: 15px !important;
-            }
-
-            .type-options {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-
-            .type-btn {
-                padding: 18px;
-                flex-direction: row;
-                justify-content: flex-start;
-                text-align: left;
-            }
-
-            .summary-total {
-                font-size: 1.25rem;
-            }
-
-            #main-checkout-btn {
-                padding: 16px 30px !important;
-                font-size: 1.1rem !important;
-                margin-top: 25px !important;
-            }
-        }
-
-        /* processing overlay */
-        #processing-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(11, 26, 35, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 9999;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-        }
-
-        .loader-box {
-            max-width: 400px;
-            padding: 40px;
-        }
-
-        .spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            border-top: 4px solid var(--primary-soft);
-            border-radius: 50%;
-            margin: 0 auto 30px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .auth-steps {
-            list-style: none;
-            padding: 0;
-            margin-top: 20px;
-            text-align: left;
-        }
-
-        .auth-step {
-            margin-bottom: 12px;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.5);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .auth-step.active {
-            color: white;
-            font-weight: 500;
-        }
-
-        .auth-step.done {
-            color: #10b981;
-        }
-
-        .auth-step i {
-            font-size: 0.8rem;
-        }
-
-        /* intl-tel-input overrides */
-        .iti {
-            width: 100%;
-        }
-
-        .iti__country-list {
-            z-index: 100;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/css/intlTelInput.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="premium-theme">
-
     <header class="site-header site-header--glass">
         <div class="container nav-bar">
             <div class="logo-block">
                 <a href="index.html" class="logo">
-                    <img src="images/logo93.png" alt="Laos Dream Destination" class="logo-img">
+                    <img src="images/logo.jpeg" alt="Laos Local Tour" class="logo-img">
                 </a>
             </div>
-
             <nav class="main-nav" id="main-nav">
                 <ul>
-                    <li><a href="index.html" data-i18n="nav_home">Home</a></li>
-                    <li class="has-dropdown">
-                        <a href="tours.html" data-i18n="nav_tours">Tours</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="tour-heritage-waterfalls.html">Heritage & Waterfalls</a></li>
-                            <li><a href="tour-elephant-adventure.html">Elephant Adventure</a></li>
-                            <li><a href="tour-mekong-cruise-2day.html">Mekong Cruise (2-Day)</a></li>
-                            <li><a href="tour-nong-khiaw-trekking.html">Nong Khiaw Trekking</a></li>
-                            <li><a href="tours.html">All Tours</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-dropdown">
-                        <a href="car-rentals.html" data-i18n="nav_rentals">Rentals</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="car-rentals.html">Car Rental</a></li>
-                            <li><a href="motorbike-rentals.html">Motorbike Rental</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-dropdown">
-                        <a href="destinations.html" data-i18n="nav_destinations">Destinations</a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-header" data-i18n="nav_top_destinations">Top Destinations</li>
-                            <li class="has-subdropdown">
-                                <a href="destinations.html"
-                                    style="display: flex; justify-content: space-between; align-items: center;"
-                                    data-i18n="dest_lp">Luang Prabang <i class="fas fa-chevron-right"
-                                        style="font-size: 0.7em; margin-left: 8px;"></i></a>
-                                <ul class="dropdown-menu sub-dropdown-menu">
-                                    <li><a href="tour-nong-khiaw-trekking.html" data-i18n="dest_nk">Nong Khiaw</a></li>
-                                    <li><a href="tour-luangprabang-city.html">Luang Prabang City</a></li>
-                                    <li><a href="tour-elephant-adventure.html">Elephant Adventure</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="destinations.html" data-i18n="dest_vt">Vientiane</a></li>
-                            <li><a href="destinations.html" data-i18n="dest_vv">Vang Vieng</a></li>
-                            <li><a href="destinations.html" data-i18n="dest_ps">Pakse</a></li>
-                            <li><a href="destinations.html" data-i18n="dest_tk">Thakhek</a></li>
-                            <li><a href="destinations.html" data-i18n="dest_sv">Luang Namtha</a></li>
-                            <li><a href="destinations.html" data-i18n="dest_cp">Champasak</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="about.html" data-i18n="nav_about">About</a></li>
-                    <li><a href="checkout.html" class="btn btn-primary btn-sm" data-i18n="nav_book">Book Now</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="tours.html">Tours</a></li>
+                    <li><a href="about.html">About</a></li>
                 </ul>
             </nav>
-
             <div class="menu-toggle" id="mobile-menu-btn">
                 <span></span>
                 <span></span>
@@ -360,404 +34,377 @@
         </div>
     </header>
 
-    <!-- PROCESSING OVERLAY -->
-    <div id="processing-overlay">
-        <div class="loader-box">
-            <div class="spinner"></div>
-            <h2 id="process-title" style="margin-bottom: 10px;">Sending Inquiry</h2>
-            <p id="process-msg" style="color: rgba(255,255,255,0.7);">We are securing your request with our system.</p>
-
-            <ul class="auth-steps">
-                <li class="auth-step active" id="step-1"><i class="fas fa-circle-notch fa-spin"></i> Initializing
-                    Request...</li>
-                <li class="auth-step" id="step-2"><i class="far fa-circle"></i> Checking Staff Availability...</li>
-                <li class="auth-step" id="step-3"><i class="far fa-circle"></i> Creating Booking Record...</li>
-                <li class="auth-step" id="step-4"><i class="far fa-circle"></i> Redirecting to Success...</li>
-            </ul>
+    <section class="page-hero section-padding">
+        <div class="container">
+            <div class="hero-text-wrap">
+                <span class="section-tag">Checkout</span>
+                <h1 class="hero-title">Complete Your Booking</h1>
+                <p class="hero-desc">Review your guest details, travel dates, and total before sending your booking inquiry.</p>
+            </div>
         </div>
-    </div>
-
-    <!-- HIDDEN EMAIL NOTIFICATION FORM -->
-    <form id="notify-form" action="https://formsubmit.co/ajax/luangprabangdreamdestination@gmail.com" method="POST"
-        style="display: none;">
-        <input type="hidden" name="booking_id" id="email-id">
-        <input type="hidden" name="tour_name" id="email-name">
-        <input type="hidden" name="email" id="email-address">
-        <input type="hidden" name="customer_details" id="email-details">
-        <input type="hidden" name="_next" value="https://laosdreamdestination.com/success.html">
-        <input type="hidden" name="_subject" value="New Booking Received!">
-    </form>
+    </section>
 
     <main class="checkout-container">
         <div class="container">
-            <h1 class="mb-40" data-i18n="checkout_title">Complete Your Booking</h1>
+            <h1 class="mb-40">Booking Details</h1>
 
             <div class="checkout-card glass-card">
                 <div class="checkout-main">
-                    <!-- CONTACT INFORMATION SECTION -->
-                    <div class="checkout-section">
-                        <h3 class="section-title">
-                            <i class="fas fa-user-circle" style="color: var(--primary);"></i>
-                            <span>Your Contact Information</span>
-                        </h3>
-                        <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                            <div>
-                                <label
-                                    style="display:block; font-size: 0.8rem; font-weight: 600; color: #64748b; margin-bottom: 8px;">Full
-                                    Name *</label>
-                                <input type="text" id="cust-name" placeholder="Enter your name"
-                                    style="width: 100%; padding: 12px; border: 1px solid var(--primary-soft); border-radius: 8px; font-size: 0.9rem;">
-                            </div>
-                            <div>
-                                <label
-                                    style="display:block; font-size: 0.8rem; font-weight: 600; color: #64748b; margin-bottom: 8px;">WhatsApp
-                                    / Phone *</label>
-                                <input type="tel" id="cust-whatsapp"
-                                    style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem;">
-                                <div id="phone-error"
-                                    style="color: #ef4444; font-size: 0.75rem; margin-top: 5px; display: none;">Please
-                                    enter a valid phone number</div>
+                    <form id="checkout-form">
+                        <input type="hidden" name="_next" value="https://laosdreamdestination.com/success.html">
+                        <input type="hidden" name="_subject" value="New Booking Received!">
+                        <input type="hidden" name="Tour" id="form-tour-name" value="">
+                        <input type="hidden" name="Destination" id="form-destination" value="">
+                        <input type="hidden" name="Duration" id="form-duration" value="">
+                        <input type="hidden" name="Price per person" id="form-price" value="">
+                        <input type="hidden" name="Total price" id="form-total-price" value="">
+
+                        <div class="checkout-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-user-circle" style="color: var(--primary);"></i>
+                                <span> Guest Information</span>
+                            </h3>
+                            <div class="form-row" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;">
+                                <div>
+                                    <label for="cust-gender" class="form-label">Gender *</label>
+                                    <select id="cust-gender" name="Gender" required class="form-control">
+                                        <option value="">Select gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="cust-name" class="form-label">Full Name *</label>
+                                    <input type="text" id="cust-name" name="Name" required placeholder="Enter your full name" class="form-control">
+                                </div>
+                                <div>
+                                    <label for="cust-email" class="form-label">Email Address *</label>
+                                    <input type="email" id="cust-email" name="Email" required placeholder="email@example.com" class="form-control">
+                                </div>
+                                <div>
+                                    <label for="cust-phone" class="form-label">Phone Number *</label>
+                                    <input type="tel" id="cust-phone" name="Phone" required placeholder="Enter your phone number" class="form-control">
+                                    <div id="phone-error" class="field-error">Please enter a valid phone number</div>
+                                </div>
+                                <div>
+                                    <label for="cust-country" class="form-label">Country *</label>
+                                    <input type="text" id="cust-country" name="Country" required placeholder="Country" class="form-control">
+                                </div>
+                                <div>
+                                    <label for="cust-whatsapp" class="form-label">WhatsApp Number</label>
+                                    <input type="tel" id="cust-whatsapp" name="WhatsApp" placeholder="Optional, for easier communication" class="form-control">
+                                </div>
+                                <div style="grid-column: 1 / -1;">
+                                    <label for="cust-notes" class="form-label">Additional Notes</label>
+                                    <textarea id="cust-notes" name="Notes" placeholder="Any special requests or extra details" class="form-control" style="min-height: 100px;"></textarea>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="checkout-section">
-                        <h3 class="section-title">
-                            <i class="fas fa-calendar-alt" style="color: var(--primary);"></i>
-                            <span>Travel Details</span>
-                        </h3>
-                        <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                            <div>
-                                <label
-                                    style="display:block; font-size: 0.8rem; font-weight: 600; color: #64748b; margin-bottom: 8px;">Email
-                                    Address *</label>
-                                <input type="email" id="cust-email" placeholder="email@example.com"
-                                    style="width: 100%; padding: 12px; border: 1px solid var(--primary-soft); border-radius: 8px; font-size: 0.9rem;">
+                        <div class="checkout-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-calendar-alt" style="color: var(--primary);"></i>
+                                <span> Travel Details</span>
+                            </h3>
+                            <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                                <div>
+                                    <label for="travel-date" class="form-label">Travel Date *</label>
+                                    <input type="date" id="travel-date" name="Travel Date" required class="form-control">
+                                </div>
+                                <div>
+                                    <label for="selected-guests" class="form-label">Tour Guests *</label>
+                                    <input type="number" id="selected-guests" name="Guests" min="1" value="1" required class="form-control">
+                                </div>
                             </div>
-                            <div>
-                                <label
-                                    style="display:block; font-size: 0.8rem; font-weight: 600; color: #64748b; margin-bottom: 8px;">Travel
-                                    Date *</label>
-                                <input type="date" id="travel-date"
-                                    style="width: 100%; padding: 12px; border: 1px solid var(--primary-soft); border-radius: 8px; font-size: 0.9rem;">
+                            <div style="margin-top: 18px; display:flex; align-items:flex-start; gap: 12px;">
+                                <input type="checkbox" id="terms-checkbox" required style="margin-top:6px; width:18px; height:18px;">
+                                <label for="terms-checkbox" style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.4;">
+                                    I agree to the <a href="https://laosgrouptours.la/book-tour/luang-prabang-walking-tour#" target="_blank" style="color: var(--primary); text-decoration: underline;">terms and conditions</a>
+                                </label>
                             </div>
                         </div>
-                    </div>
 
-                    <button id="main-checkout-btn" class="btn btn-primary btn-xl"
-                        style="width: 100%; margin-top: 40px;">Send Booking Inquiry</button>
+                        <div class="checkout-section">
+                            <h3 class="section-title">
+                                <i class="fas fa-info-circle" style="color: var(--primary);"></i>
+                                <span> Tour Information</span>
+                            </h3>
+                            <div style="display: grid; grid-template-columns: 1fr 150px; gap: 16px; align-items: center;">
+                                <div>
+                                    <label class="form-label">Selected Tour</label>
+                                    <div id="checkout-tour-name" class="form-summary-panel">--</div>
+                                </div>
+                                <div>
+                                    <label class="form-label">Number of Adults</label>
+                                    <div id="checkout-tour-guests" class="form-summary-panel">x1</div>
+                                </div>
+                            </div>
+                            <div style="margin-top:12px; display:flex; justify-content:space-between; align-items:center;">
+                                <div style="color:var(--text-muted); font-size:0.9rem;">Price per person</div>
+                                <div id="checkout-tour-price" style="font-weight:700;">$0.00</div>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="main-checkout-btn" class="btn btn-primary btn-xl btn-full-width" style="margin-top: 40px;">Send Booking Inquiry</button>
+                    </form>
                 </div>
 
                 <div class="checkout-sidebar">
-                    <h3 class="mb-30" data-i18n="checkout_summary">Booking Summary</h3>
+                    <h3 class="mb-30">Booking Summary</h3>
 
                     <div class="summary-item">
-                        <span id="summary-product-name" data-i18n="tour_heritage_title">Heritage & Waterfalls</span>
-                        <strong id="summary-product-price">$45.00</strong>
+                        <span>Tour</span>
+                        <strong id="summary-product-name">--</strong>
                     </div>
                     <div class="summary-item">
-                        <span>Participants (1)</span>
-                        <strong>x1</strong>
+                        <span>Destination</span>
+                        <strong id="summary-destination">--</strong>
                     </div>
+                    <div class="summary-item">
+                        <span>Duration</span>
+                        <strong id="summary-duration">--</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span>Price per person</span>
+                        <strong id="summary-product-price">$0.00</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span id="summary-participants-label">Participants (1)</span>
+                        <strong id="summary-participants">x1</strong>
+                    </div>
+
+                    <div class="summary-item" id="balance-row" style="display: none;">
+                        <span>Balance</span>
+                        <strong id="summary-balance">$0.00</strong>
+                    </div>
+
+                    <div class="summary-total">
+                        <span id="label-due-now">Total</span>
+                        <strong id="summary-total-price">$0.00</strong>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="images/logo.jpeg" alt="Logo" class="footer-logo">
+                    <p>Premier local tour operator and DMC, dedicated to authentic slow travel and sustainable heritage tourism in the heart of Laos.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="tours.html">All Tours</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="checkout.html">Book Now</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Luang Prabang, Laos</li>
+                        <li><i class="fas fa-phone"></i> +856 20 9845 7614</li>
+                        <li><i class="fas fa-envelope"></i> luangprabangdreamdestination@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom flex-between">
+                <p>&copy; 2026 Laos Local Tour. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/js/intlTelInput.min.js"></script>
     <script src="js/main.js"></script>
     <script>
+        function parsePrice(value) {
+            if (!value) return 0;
+            const normalized = String(value).replace(/,/g, '').trim();
+            const number = parseFloat(normalized.replace(/[^0-9.\-]/g, ''));
+            return Number.isFinite(number) ? number : 0;
+        }
+
+        function formatCurrency(value) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                maximumFractionDigits: 2
+            }).format(value);
+        }
+
+        function updateSummary(guestCount, unitPrice) {
+            const total = Math.max(guestCount, 1) * unitPrice;
+            document.getElementById('summary-participants-label').textContent = `Participants (${guestCount})`;
+            document.getElementById('summary-participants').textContent = `x${guestCount}`;
+            document.getElementById('summary-total-price').textContent = formatCurrency(total);
+            document.getElementById('checkout-tour-guests').textContent = `x${guestCount}`;
+            document.getElementById('summary-product-price').textContent = formatCurrency(unitPrice);
+            document.getElementById('checkout-tour-price').textContent = formatCurrency(unitPrice);
+            document.getElementById('form-price').value = formatCurrency(unitPrice);
+            document.getElementById('form-total-price').value = formatCurrency(total);
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialize international phone input
-            const phoneInput = document.querySelector("#cust-whatsapp");
-            const phoneError = document.querySelector("#phone-error");
+            const phoneInput = document.querySelector('#cust-phone');
+            const phoneError = document.querySelector('#phone-error');
+            let iti;
 
-            const iti = window.intlTelInput(phoneInput, {
-                initialCountry: "la",
-                separateDialCode: true,
-                preferredCountries: ["la", "th", "vn", "us", "gb", "fr", "jp"],
-                utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/js/utils.js",
-            });
-
-            // Validation logic
-            const validatePhone = () => {
-                const isValid = iti.isValidNumber();
-                if (phoneInput.value.trim()) {
-                    if (isValid) {
-                        phoneInput.style.borderColor = "#10b981"; // Success Green
-                        phoneError.style.display = "none";
-                        return true;
-                    } else {
-                        phoneInput.style.borderColor = "#ef4444"; // Error Red
-                        phoneError.style.display = "block";
-                        return false;
-                    }
-                }
-                phoneInput.style.borderColor = "#e2e8f0";
-                phoneError.style.display = "none";
-                return false;
-            };
-
-            phoneInput.addEventListener('keyup', validatePhone);
-            phoneInput.addEventListener('change', validatePhone);
-            phoneInput.addEventListener('countrychange', validatePhone);
-
-            // Auto-Save Logic
-            const fieldsToSave = ['cust-name', 'cust-email', 'travel-date'];
-
-            // Populate fields from localStorage on load
-            fieldsToSave.forEach(id => {
-                const savedValue = localStorage.getItem(`form_${id}`);
-                if (savedValue) {
-                    const el = document.getElementById(id);
-                    if (el) el.value = savedValue;
-                }
-            });
-
-            // Populating phone separately because of iti
-            const savedPhone = localStorage.getItem('form_cust-whatsapp');
-            if (savedPhone) phoneInput.value = savedPhone;
-
-            // Add change listeners to save data
-            fieldsToSave.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) {
-                    el.addEventListener('input', () => {
-                        localStorage.setItem(`form_${id}`, el.value);
-                    });
-                }
-            });
-
-            phoneInput.addEventListener('input', () => {
-                localStorage.setItem('form_cust-whatsapp', phoneInput.value);
-            });
-
-            // 1. Generate unique Booking ID if it doesn't exist for this session
-            let bookingId = localStorage.getItem('current_booking_id');
-            if (!bookingId) {
-                bookingId = 'LST-' + Date.now().toString().slice(-6) + Math.floor(Math.random() * 100);
-                localStorage.setItem('current_booking_id', bookingId);
-            }
-
-            // Load selected product info from localStorage
-            const selectedName = localStorage.getItem('selected_product_name');
-            const selectedPrice = localStorage.getItem('selected_product_price');
-            const selectedDate = localStorage.getItem('selected_product_date');
-            const selectedGuests = localStorage.getItem('selected_product_guests') || 1;
-
-            // Initialize date picker if date exists
-            const travelDateInput = document.getElementById('travel-date');
-            if (travelDateInput && selectedDate) {
-                // If it's a standard date string, attempt to set it
-                travelDateInput.value = selectedDate;
-            }
-
-            // Set min date to today
-            if (travelDateInput) {
-                const today = new Date().toISOString().split('T')[0];
-                travelDateInput.setAttribute('min', today);
-            }
-
-            if (selectedName && selectedPrice) {
-                const nameEl = document.getElementById('summary-product-name');
-                const priceEl = document.getElementById('summary-product-price');
-                const totalEl = document.getElementById('summary-total-price');
-                const guestsEl = document.querySelector('.summary-item:nth-child(2) strong');
-                const dateContainer = document.createElement('div');
-
-                if (nameEl) {
-                    nameEl.textContent = selectedName;
-                    nameEl.removeAttribute('data-i18n');
-                }
-                if (selectedDate && nameEl) {
-                    dateContainer.className = 'summary-item';
-                    dateContainer.style.fontSize = '0.85rem';
-                    dateContainer.style.color = 'var(--text-muted)';
-                    dateContainer.style.marginTop = '-10px';
-                    dateContainer.innerHTML = `<span>Travel Date</span><strong>${selectedDate}</strong>`;
-                    nameEl.parentElement.after(dateContainer);
-                }
-                if (guestsEl) {
-                    guestsEl.textContent = `x${selectedGuests}`;
-                    guestsEl.previousElementSibling.textContent = `Participants (${selectedGuests})`;
-                }
-
-                if (priceEl && totalEl) {
-                    if (priceEl && totalEl) {
-                        function updateCalculations() {
-                            // Price logic
-                            let isMilli = selectedPrice.toLowerCase().includes('m');
-                            let cleanStr = selectedPrice.replace(/[^\d.]/g, '');
-                            let numericPrice = parseFloat(cleanStr);
-                            if (isMilli) numericPrice = numericPrice * 1000000;
-                            if (isNaN(numericPrice)) numericPrice = 45;
-
-                            const unit = selectedPrice.includes('KIP') ? ' KIP' : '$';
-                            const isKip = selectedPrice.includes('KIP');
-                            priceEl.textContent = isKip ? (numericPrice).toLocaleString() + unit : unit + numericPrice.toFixed(2);
-
-                            const fullTotal = numericPrice * parseInt(selectedGuests);
-
-                            const labelDueNow = document.getElementById('label-due-now');
-                            const balanceRow = document.getElementById('balance-row');
-                            
-                            if (labelDueNow) labelDueNow.textContent = "Estimated Total";
-                            if (balanceRow) balanceRow.style.display = 'none';
-                            
-                            localStorage.setItem('payment_mode', 'inquiry');
-
-                            if (totalEl) totalEl.textContent = isKip ? (fullTotal).toLocaleString() + unit : unit + fullTotal.toFixed(2);
-                            if (totalEl) localStorage.setItem('due_now_value', totalEl.textContent);
-                        }
-
-                        updateCalculations();
-                    }
-                }
-            }
-
-            const mainCheckoutBtn = document.getElementById('main-checkout-btn');
-
-            mainCheckoutBtn.addEventListener('click', async () => {
-                const nameInput = document.getElementById('cust-name');
-                const waInput = document.getElementById('cust-whatsapp');
-                const emailInput = document.getElementById('cust-email');
-                const dateInput = document.getElementById('travel-date');
-                const mode = localStorage.getItem('payment_mode');
-
-                if (!nameInput.value || !iti.isValidNumber() || !emailInput.value || !dateInput.value) {
-                    if (!iti.isValidNumber()) {
-                        showToast('Invalid Phone', 'Please enter a valid phone number for your country.', 'warning');
-                        validatePhone();
-                    } else {
-                        showToast('Missing Info', 'Please fill in all required fields, including your Travel Date!', 'warning');
-                    }
-                    return;
-                }
-
-                // Simple email validation
-                if (!emailInput.value.includes('@')) {
-                    showToast('Invalid Email', 'Please enter a valid email address.', 'warning');
-                    return;
-                }
-
-                const overlay = document.getElementById('processing-overlay');
-                overlay.style.display = 'flex';
-                await runAuthSteps();
-
-                await sendNotification();
-
-                // Clear auto-saved data on success
-                ['cust-name', 'cust-email', 'travel-date', 'cust-whatsapp'].forEach(id => {
-                    localStorage.removeItem(`form_${id}`);
+            if (phoneInput && window.intlTelInput) {
+                iti = window.intlTelInput(phoneInput, {
+                    initialCountry: 'la',
+                    separateDialCode: false,
+                    nationalMode: false,
+                    preferredCountries: ['la', 'th', 'vn', 'us', 'gb', 'fr', 'jp'],
+                    utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/js/utils.js'
                 });
 
-                window.location.href = 'success.html';
+                const countryField = document.getElementById('cust-country');
+                const setCountryFromPhone = () => {
+                    const countryData = iti.getSelectedCountryData();
+                    if (countryData?.name && !countryField.value.trim()) {
+                        countryField.value = countryData.name;
+                    }
+                };
+
+                setCountryFromPhone();
+                phoneInput.addEventListener('countrychange', setCountryFromPhone);
+
+                const itiStyle = document.createElement('style');
+                itiStyle.textContent = `
+                    .iti { width: 100%; }
+                    .iti__flag-container { width: 56px; }
+                    .iti__selected-flag { border-radius: 10px 0 0 10px; }
+                    .iti__country-list { max-height: 320px; }
+                    .iti__separate-dial-code { display: none; }
+                `;
+                document.head.appendChild(itiStyle);
+            }
+
+            const selectedGuests = document.getElementById('selected-guests');
+            const summaryName = document.getElementById('summary-product-name');
+            const summaryDestination = document.getElementById('summary-destination');
+            const summaryDuration = document.getElementById('summary-duration');
+            const checkoutTourName = document.getElementById('checkout-tour-name');
+            const formTourName = document.getElementById('form-tour-name');
+            const formDestination = document.getElementById('form-destination');
+            const formDuration = document.getElementById('form-duration');
+
+            const storedName = localStorage.getItem('selected_product_name') || 'Heritage & Waterfalls';
+            const storedPrice = localStorage.getItem('selected_product_price') || '$45.00';
+            const storedDate = localStorage.getItem('selected_product_date') || '';
+            const storedGuests = parseInt(localStorage.getItem('selected_product_guests') || '1', 10) || 1;
+            const storedDestination = localStorage.getItem('selected_product_destination') || 'TBC';
+            const storedDuration = localStorage.getItem('selected_product_duration') || 'TBC';
+
+            document.getElementById('travel-date').value = storedDate;
+            selectedGuests.value = storedGuests;
+            summaryName.textContent = storedName;
+            summaryDestination.textContent = storedDestination;
+            summaryDuration.textContent = storedDuration;
+            checkoutTourName.textContent = storedName;
+            formTourName.value = storedName;
+            formDestination.value = storedDestination;
+            formDuration.value = storedDuration;
+
+            const prefillName = localStorage.getItem('form_cust-name') || '';
+            const prefillWhatsApp = localStorage.getItem('form_cust-whatsapp') || '';
+            if (prefillName) document.getElementById('cust-name').value = prefillName;
+            if (prefillWhatsApp) document.getElementById('cust-whatsapp').value = prefillWhatsApp;
+
+            const unitPrice = parsePrice(storedPrice) || 0;
+            updateSummary(storedGuests, unitPrice);
+
+            const syncGuestSummary = () => {
+                const guests = Math.max(1, parseInt(selectedGuests.value || '1', 10));
+                selectedGuests.value = guests;
+                updateSummary(guests, unitPrice);
+            };
+
+            ['change', 'input', 'blur'].forEach(eventName => {
+                selectedGuests.addEventListener(eventName, syncGuestSummary);
             });
 
-            async function runAuthSteps() {
-                const steps = ['step-1', 'step-2', 'step-3', 'step-4'];
-                for (let i = 0; i < steps.length; i++) {
-                    const el = document.getElementById(steps[i]);
-                    if (!el) continue;
-                    el.classList.add('active');
-                    el.querySelector('i').className = 'fas fa-circle-notch fa-spin';
-                    await new Promise(r => setTimeout(r, 600 + Math.random() * 800));
-                    el.classList.remove('active');
-                    el.classList.add('done');
-                    el.querySelector('i').className = 'fas fa-check-circle';
+            const checkoutForm = document.getElementById('checkout-form');
+
+            checkoutForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                const name = document.getElementById('cust-name').value.trim();
+                const email = document.getElementById('cust-email').value.trim();
+                const rawPhone = document.getElementById('cust-phone').value.trim();
+                const country = document.getElementById('cust-country').value.trim();
+                const travelDate = document.getElementById('travel-date').value;
+                const guests = Math.max(1, parseInt(selectedGuests.value || '1', 10));
+                const gender = document.getElementById('cust-gender').value;
+                const terms = document.getElementById('terms-checkbox').checked;
+
+                if (!name || !email || !rawPhone || !country || !travelDate || !gender || !terms) {
+                    showToast('Complete the form', 'Please fill all required fields and agree to the terms.', 'warning');
+                    return;
                 }
-            }
 
-            async function sendNotification() {
+                if (iti && !iti.isValidNumber()) {
+                    phoneError.style.display = 'block';
+                    return;
+                }
+
+                phoneError.style.display = 'none';
+                const phone = iti ? iti.getNumber() : rawPhone;
+
+                const formData = new FormData(checkoutForm);
+                formData.set('Tour', storedName);
+                formData.set('Destination', storedDestination);
+                formData.set('Duration', storedDuration);
+                formData.set('Price per person', formatCurrency(unitPrice));
+                formData.set('Total price', formatCurrency(guests * unitPrice));
+                formData.set('Guests', guests);
+                formData.set('Travel Date', travelDate);
+                formData.set('Name', name);
+                formData.set('Email', email);
+                formData.set('Phone', phone);
+                formData.set('Country', country);
+                formData.set('Gender', gender);
+
+                showToast('Sending booking inquiry...', 'Please wait while we submit your details.', 'info');
+
                 try {
-                    const id = localStorage.getItem('current_booking_id');
-                    const prodName = localStorage.getItem('selected_product_name');
-                    const guests = document.getElementById('selected-guests')?.value || localStorage.getItem('selected_product_guests') || 1;
-                    const date = document.getElementById('travel-date').value;
-                    const custName = document.getElementById('cust-name').value;
-                    const custWA = iti.getNumber();
-                    const custEmail = document.getElementById('cust-email').value;
-                    const mode = localStorage.getItem('payment_mode');
-
-                    // Store for success message
-                    localStorage.setItem('cust_name', custName);
-                    localStorage.setItem('cust_whatsapp', custWA);
-                    localStorage.setItem('cust_email', custEmail);
-                    localStorage.setItem('selected_product_guests', guests);
-                    localStorage.setItem('selected_product_date', date);
-
-                    // 1. Send Email via FormSubmit
-                    document.getElementById('email-id').value = id;
-                    document.getElementById('email-name').value = prodName;
-                    document.getElementById('email-address').value = custEmail;
-                    document.getElementById('email-details').value = `Customer: ${custName}, WhatsApp: ${custWA}, Email: ${custEmail}, Date: ${date}, Guests: ${guests}, Mode: ${mode}`;
-
-                    // Also store for success message
-                    localStorage.setItem('cust_name', custName);
-                    localStorage.setItem('cust_whatsapp', custWA);
-                    localStorage.setItem('cust_email', custEmail);
-
-                    const form = document.getElementById('notify-form');
-                    const formData = new FormData(form);
-                    const emailTask = fetch(form.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
-
-                    // 2. Send Data to Google Sheets (Improved Method)
-                    const scriptURL = 'https://script.google.com/macros/s/AKfycbxbKhmI9OPt9hn3ooMA_Po9Sp9pezuMshX7-YyWbM3gYBpga6qVFaIgAARe1lTTfX8F/exec';
-
-                    // We send as a simple GET/Query string for highest reliability with static sites
-                    const queryParams = new URLSearchParams({
-                        booking_id: id,
-                        tour_name: prodName,
-                        guests: guests,
-                        travel_date: date || 'Not selected',
-                        customer_name: custName,
-                        whatsapp: custWA,
-                        email: custEmail,
-                        payment_mode: mode
-                    }).toString();
-
-                    const sheetTask = fetch(`${scriptURL}?${queryParams}`, {
-                        method: 'POST', // Still a POST but with standard params
-                        mode: 'no-cors'
+                    const response = await fetch('https://formsubmit.co/ajax/luangprabangdreamdestination@gmail.com', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
                     });
 
-                    // 3. Send Telegram Notification (Admin Alert)
-                    // Recommendation: Set your Bot Token and Chat ID below to get instant phone alerts!
-                    const TELEGRAM_TOKEN = '7667825000:AAFn3W_pOnC09_K_hX_kSInyK6XEnnE1YtQ'; // Replace with yours
-                    const TELEGRAM_CHAT_ID = '6010078044'; // Replace with yours
-
-                    let tgTask = Promise.resolve();
-                    if (TELEGRAM_TOKEN && TELEGRAM_CHAT_ID) {
-                        const tgMsg = `🔔 *New Booking Request!*\n\n` +
-                            `🆔 ID: ${id}\n` +
-                            `🌍 Tour: ${prodName}\n` +
-                            `👤 Guest: ${custName}\n` +
-                            `📱 WhatsApp: ${custWA}\n` +
-                            `📅 Date: ${date || 'TBC'}\n` +
-                            `👥 Group: ${guests}\n` +
-                            `💳 Mode: ${mode.toUpperCase()}`;
-
-                        tgTask = fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                chat_id: TELEGRAM_CHAT_ID,
-                                text: tgMsg,
-                                parse_mode: 'Markdown'
-                            })
-                        });
+                    if (!response.ok) {
+                        throw new Error('Submission failed');
                     }
 
-                    // Wait for all tasks to complete
-                    await Promise.allSettled([emailTask, sheetTask, tgTask]);
-                } catch (e) { console.warn('Notification error:', e); }
-            }
+                    showToast('Inquiry sent!', 'We received your booking request and will contact you soon.', 'success');
+                    localStorage.setItem('form_cust-name', name);
+                    localStorage.setItem('form_cust-whatsapp', document.getElementById('cust-whatsapp').value.trim());
+                    checkoutForm.reset();
+                    syncGuestSummary();
 
-            // PayPal removed
+                    setTimeout(() => {
+                        window.location.href = 'success.html';
+                    }, 1600);
+                } catch (error) {
+                    showToast('Submission failed', 'Please try again or contact us directly on WhatsApp.', 'error');
+                }
+            });
         });
     </script>
 </body>
 
 </html>
-

@@ -1,4 +1,24 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', async () => {
+    const loadFragment = async (placeholderSelector, sourceUrl, elementSelector) => {
+        const placeholder = document.querySelector(placeholderSelector);
+        if (!placeholder) return;
+        try {
+            const response = await fetch(sourceUrl);
+            if (!response.ok) return;
+            const html = await response.text();
+            const parser = new DOMParser();
+            const fragmentDoc = parser.parseFromString(html, 'text/html');
+            const fragment = fragmentDoc.querySelector(elementSelector);
+            if (fragment) {
+                placeholder.replaceWith(fragment);
+            }
+        } catch (error) {
+            console.warn(`Unable to load fragment from ${sourceUrl}:`, error);
+        }
+    };
+
+    await loadFragment('#header-placeholder', 'header.html', 'header.site-header');
+    await loadFragment('#footer-placeholder', 'footer.html', 'footer.site-footer');
 
     // ========== 📱 WHATSAPP CLICK TRACKING NOTIFIER ==========
     const notifyWhatsAppClick = (url) => {
@@ -26,21 +46,6 @@
                 }
             }).catch(e => console.log('Silently ignored Notification', e));
         } catch (e) { }
-    };
-
-    // Track standard link clicks anywhere on the document
-    document.body.addEventListener('click', (e) => {
-        const target = e.target.closest('a');
-        if (target && target.href) {
-            notifyWhatsAppClick(target.href);
-        }
-    });
-
-    // Track programmatic window.open calls (like those from forms)
-    const originalWindowOpen = window.open;
-    window.open = function (url, target, features) {
-        notifyWhatsAppClick(url);
-        return originalWindowOpen.call(window, url, target, features);
     };
 
     // ========== 🕵️ HEADER SCROLL LOGIC ==========
@@ -95,23 +100,7 @@
         });
     });
 
-    // ========== 🌍 LANGUAGE PICKER ==========
-    const langDropdown = document.querySelector('.lang-dropdown');
-    if (langDropdown) {
-        langDropdown.addEventListener('click', (e) => {
-            if (!e.target.closest('.lang-btn')) {
-                langDropdown.classList.toggle('active');
-            }
-        });
-    }
-
-    document.addEventListener('click', (e) => {
-        if (langDropdown && !langDropdown.contains(e.target)) {
-            langDropdown.classList.remove('active');
-        }
-    });
-
-    // ========== 🌊 SCROLL REVEAL (Intersection Observer) ==========
+    // ==========  SCROLL REVEAL (Intersection Observer) ==========
     const revealElements = document.querySelectorAll('.reveal');
     const observerOptions = {
         threshold: 0.15,
@@ -147,75 +136,6 @@
     });
 
     // ========== 📱 DYNAMIC MOBILE COMPONENTS ==========
-    const injectMobileExtras = () => {
-        // 1. Bottom Nav Tab Bar
-        const bottomNav = document.createElement('nav');
-        bottomNav.className = 'mobile-bottom-nav';
-
-        // Determine active state
-        const path = window.location.pathname;
-        const isHome = path.includes('index.html') || path.endsWith('/');
-        const isTours = path.includes('tour') || path.includes('tours.html');
-        const isRentals = path.includes('rental');
-
-        bottomNav.innerHTML = `
-            <a href="index.html" class="mobile-nav-item ${isHome ? 'active' : ''}">
-                <i class="fas fa-home"></i>
-                <span data-i18n="nav_home">Home</span>
-            </a>
-            <a href="tours.html" class="mobile-nav-item ${isTours ? 'active' : ''}">
-                <i class="fas fa-map-marked-alt"></i>
-                <span data-i18n="nav_tours">Tours</span>
-            </a>
-            <a href="car-rentals.html" class="mobile-nav-item ${isRentals ? 'active' : ''}">
-                <i class="fas fa-car"></i>
-                <span data-i18n="nav_rentals">Rentals</span>
-            </a>
-            <a href="https://wa.me/8562098457614" class="mobile-nav-item">
-                <i class="fab fa-whatsapp"></i>
-                <span>WhatsApp</span>
-            </a>
-        `;
-        document.body.appendChild(bottomNav);
-
-        // 2. WhatsApp Pulsed Floating Button
-        if (!document.querySelector('.whatsapp-float')) {
-            const waButton = document.createElement('a');
-            waButton.href = 'https://wa.me/8562098457614';
-            waButton.className = 'whatsapp-float';
-            waButton.target = '_blank';
-            waButton.innerHTML = '<i class="fab fa-whatsapp"></i>';
-            document.body.appendChild(waButton);
-        }
-
-        // 3. Sticky Bottom CTA (Only on Tour/Rental sub-pages)
-        const isSubPage = (path.includes('tour-') || path.includes('eco-dyeing') || path.includes('rentals.html') || path.includes('motorbike'));
-        if (isSubPage) {
-            const h1 = document.querySelector('h1')?.textContent || 'This Tour';
-            let priceText = 'Best Price';
-            const priceTags = Array.from(document.querySelectorAll('span, li, p')).filter(el => el.textContent.includes('$') || el.textContent.includes('KIP'));
-            if (priceTags.length > 0) {
-                priceTags.sort((a, b) => a.textContent.length - b.textContent.length);
-                priceText = priceTags[0].textContent.trim();
-            }
-
-            const stickyCta = document.createElement('div');
-            stickyCta.className = 'sticky-mobile-cta';
-            stickyCta.innerHTML = `
-                <div class="sticky-cta-info">
-                    <span class="label">Now Booking</span>
-                    <span class="price">${priceText}</span>
-                </div>
-                <button class="btn btn-primary btn-sm" onclick="window.bookFromSticky('${h1}', '${priceText}')">Inquire & Book</button>
-            `;
-            document.body.appendChild(stickyCta);
-        }
-    };
-
-    window.bookFromSticky = (name, price) => {
-        bookProduct(name, price);
-    };
-
     // ========== ⚡ SMART IMAGE OPTIMIZER (Lazy Loading) ==========
     const optimizeImages = () => {
         const allImages = document.querySelectorAll('img');
@@ -248,23 +168,7 @@
     };
 
     optimizeImages();
-    injectMobileExtras();
 
-    // ========== ❓ FAQ ACCORDION ==========
-    const faqItems = document.querySelectorAll('.faq-item');
-    if (faqItems) {
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            if (question) {
-                question.addEventListener('click', () => {
-                    item.classList.toggle('active');
-                    faqItems.forEach(other => {
-                        if (other !== item) other.classList.remove('active');
-                    });
-                });
-            }
-        });
-    }
 });
 
 // ========== 📩 FORM-FIRST INQUIRY LOGIC ==========
@@ -328,17 +232,43 @@ window.handleInquiry = async (mode, tourName) => {
 };
 
 // ========== 🛒 CHECKOUT LOGIC ==========
-function bookProduct(name, price, date = '', guests = 1) {
+function bookProduct(name, price, date = '', guests = 1, destination = '', duration = '') {
     localStorage.setItem('selected_product_name', name);
     localStorage.setItem('selected_product_price', price);
     localStorage.setItem('selected_product_date', date);
     localStorage.setItem('selected_product_guests', guests);
+    if (destination) localStorage.setItem('selected_product_destination', destination);
+    if (duration) localStorage.setItem('selected_product_duration', duration);
 
     showToast('Ready to book!', `Added ${name} to your inquiry.`, 'success');
 
     setTimeout(() => {
         window.location.href = 'checkout.html';
     }, 1500);
+}
+
+// Start inquiry from a tour detail page: save any inline form values and redirect to checkout
+function startInquiry(name, price, date = '', guests = 1, destination = '', duration = '') {
+    try {
+        const pageDate = document.getElementById('book-date')?.value || '';
+        const pageGuests = document.getElementById('book-guests')?.value || 1;
+        const bookName = document.getElementById('book-name')?.value || '';
+        const bookPhone = document.getElementById('book-phone')?.value || '';
+
+        localStorage.setItem('selected_product_name', name);
+        localStorage.setItem('selected_product_price', price);
+        if (date || pageDate) localStorage.setItem('selected_product_date', date || pageDate);
+        localStorage.setItem('selected_product_guests', guests || pageGuests);
+        if (destination) localStorage.setItem('selected_product_destination', destination);
+        if (duration) localStorage.setItem('selected_product_duration', duration);
+
+        // Prefill checkout form fields if user already entered them on detail page
+        if (bookName) localStorage.setItem('form_cust-name', bookName);
+        if (bookPhone) localStorage.setItem('form_cust-whatsapp', bookPhone);
+    } catch (e) { console.warn('startInquiry error', e); }
+
+    showToast('Redirecting to Inquiry', 'Please complete your contact details to send an inquiry.', 'info');
+    setTimeout(() => window.location.href = 'checkout.html', 600);
 }
 
 // ========== 🔔 NOTIFICATION SYSTEM (TOASTS) ==========
@@ -397,5 +327,146 @@ document.addEventListener('DOMContentLoaded', () => {
             disableMobile: "true" // Force flatpickr on mobile for consistency
         });
     }
+
+    createBookingModal();
+    initializeTourStickyCTA();
 });
+
+// ========== 🛍️ BOOKING MODAL (Reusable across pages) ==========
+function createBookingModal() {
+        if (document.getElementById('booking-modal')) return;
+
+        const modalHtml = `
+        <div id="booking-modal" class="booking-modal" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:20000;">
+            <div class="booking-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.6);"></div>
+            <div class="booking-panel" style="position:relative;background:#fff;border-radius:12px;max-width:760px;width:94%;padding:20px;box-shadow:0 20px 60px rgba(0,0,0,0.4);z-index:20001;">
+                <button id="booking-close" style="position:absolute;right:14px;top:14px;background:transparent;border:none;font-size:1.2rem;color:#333;">&times;</button>
+                <h3 id="modal-tour-title" style="margin-top:0;font-size:1.25rem;color:var(--primary);">Book Activity</h3>
+                <div style="display:grid;grid-template-columns:1fr 320px;gap:16px;align-items:start;">
+                    <div>
+                        <div style="margin-bottom:8px;"><input id="book-name" placeholder="Your name *" style="width:100%;padding:10px;border:1px solid #ddd;border-radius:6px;"></div>
+                        <div style="margin-bottom:8px;"><input id="book-phone" placeholder="WhatsApp / Phone *" style="width:100%;padding:10px;border:1px solid #ddd;border-radius:6px;"></div>
+                        <div style="margin-bottom:8px;display:flex;gap:8px;"><input id="book-date" type="date" style="flex:1;padding:10px;border:1px solid #ddd;border-radius:6px;"><input id="book-guests" type="number" min="1" value="1" style="width:110px;padding:10px;border:1px solid #ddd;border-radius:6px;"></div>
+                        <div style="margin-bottom:8px;"><select id="book-package" style="width:100%;padding:10px;border:1px solid #ddd;border-radius:6px;"><option value="Standard">Standard</option><option value="Private">Private</option></select></div>
+                        <div style="margin-bottom:8px;"><textarea id="book-notes" placeholder="Notes / Special requirements" style="width:100%;padding:10px;border:1px solid #ddd;border-radius:6px;min-height:80px;"></textarea></div>
+                    </div>
+                    <div style="background:#fafafa;padding:16px;border-radius:8px;border:1px solid #eee;">
+                        <div style="font-size:0.95rem;color:#666;margin-bottom:10px;">Selected</div>
+                        <div id="modal-tour-name" style="font-weight:700;margin-bottom:6px;">—</div>
+                        <div id="modal-tour-price" style="color:var(--primary);font-weight:800;margin-bottom:12px;">—</div>
+                        <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
+                            <button id="modal-wa" class="btn" style="background:#25D366;color:#fff;">Send Inquiry (WhatsApp)</button>
+                            <button id="modal-email" class="btn btn-outline">Send Inquiry (Email)</button>
+                            <button id="modal-checkout" class="btn btn-primary">Go to Checkout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+
+        document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+        const modal = document.getElementById('booking-modal');
+        const closeBtn = document.getElementById('booking-close');
+        const overlay = modal.querySelector('.booking-overlay');
+
+        function closeModal() { modal.style.display = 'none'; }
+        closeBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', closeModal);
+
+        // Wire modal buttons
+        document.getElementById('modal-wa').addEventListener('click', () => {
+                const title = document.getElementById('modal-tour-name').textContent;
+                handleInquiry('whatsapp', title);
+        });
+        document.getElementById('modal-email').addEventListener('click', () => {
+                const title = document.getElementById('modal-tour-name').textContent;
+                handleInquiry('email', title);
+        });
+        document.getElementById('modal-checkout').addEventListener('click', () => {
+                // Save to localStorage and go to checkout
+                const title = document.getElementById('modal-tour-name').textContent;
+                const price = document.getElementById('modal-tour-price').textContent;
+                const date = document.getElementById('book-date').value || '';
+                const guests = document.getElementById('book-guests').value || 1;
+                localStorage.setItem('selected_product_name', title);
+                localStorage.setItem('selected_product_price', price);
+                if (date) localStorage.setItem('selected_product_date', date);
+                localStorage.setItem('selected_product_guests', guests);
+                modal.style.display = 'none';
+                window.location.href = 'checkout.html';
+        });
+}
+
+function openBookingModal(name, price) {
+        createBookingModal();
+        const modal = document.getElementById('booking-modal');
+        if (!modal) return;
+        document.getElementById('modal-tour-title').textContent = `Book: ${name}`;
+        document.getElementById('modal-tour-name').textContent = name;
+        document.getElementById('modal-tour-price').textContent = price;
+        // Prefill fields from localStorage if available
+        const savedName = localStorage.getItem('form_cust-name') || '';
+        const savedPhone = localStorage.getItem('form_cust-whatsapp') || '';
+        const savedDate = localStorage.getItem('form_travel-date') || localStorage.getItem('selected_product_date') || '';
+        const savedGuests = localStorage.getItem('selected_product_guests') || 1;
+        document.getElementById('book-name').value = savedName;
+        document.getElementById('book-phone').value = savedPhone;
+        document.getElementById('book-date').value = savedDate;
+        document.getElementById('book-guests').value = savedGuests;
+        modal.style.display = 'flex';
+}
+
+function initializeTourStickyCTA() {
+    const hero = document.querySelector('.tour-hero');
+    if (!hero) return;
+
+    const name = hero.querySelector('h1')?.textContent.trim() || document.title;
+    let price = '';
+
+    document.querySelectorAll('script[type="application/ld+json"]').forEach((script) => {
+        try {
+            const data = JSON.parse(script.textContent || '{}');
+            if (data && typeof data.price === 'string' && data.price.trim()) {
+                price = data.price.trim();
+                if (/^\d+(?:\.\d+)?$/.test(price)) {
+                    price = '$' + price;
+                }
+            }
+        } catch (error) {
+            // ignore invalid JSON
+        }
+    });
+
+    if (!price) {
+        const priceMatch = document.body.textContent.match(/\$\s?\d+[\d,.]*/);
+        if (priceMatch) {
+            price = priceMatch[0].trim();
+        }
+    }
+
+    if (!price) {
+        price = '$45';
+    }
+
+    const sticky = document.createElement('div');
+    sticky.className = 'sticky-tour-booking show';
+    sticky.innerHTML = `
+        <div class="sticky-cta-info">
+            <div class="label">Tour starting from</div>
+            <span class="price">${price}</span>
+            <span class="tour-name">${name}</span>
+        </div>
+        <button type="button" class="btn btn-primary btn-sm">Book Now</button>
+    `;
+
+    sticky.querySelector('button')?.addEventListener('click', () => {
+        bookProduct(name, price);
+    });
+
+    document.body.appendChild(sticky);
+}
+
+// Ensure modal exists on initial load
+document.addEventListener('DOMContentLoaded', createBookingModal);
 

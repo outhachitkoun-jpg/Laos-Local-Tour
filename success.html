@@ -4,17 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Confirmed | Laos Dream Destination</title>
+    <title>Booking Confirmed | Laos Local Tour</title>
 
     <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Flags & Style -->
-    <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css'>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/i18n.js" defer></script>
-
-    <style>
+    <!-- Flags & Style -->    <link rel="stylesheet" href="css/style.css">    <style>
         .success-container {
             padding-top: 140px;
             padding-bottom: 100px;
@@ -155,55 +150,16 @@
         <div class="container nav-bar">
             <div class="logo-block">
                 <a href="index.html" class="logo">
-                    <img src="images/logo93.png" alt="Laos Dream Destination" class="logo-img">
+                    <img src="images/logo.jpeg" alt="Laos Local Tour" class="logo-img">
                 </a>
             </div>
 
-            <nav class="main-nav" id="main-nav">
+                        <nav class="main-nav" id="main-nav">
                 <ul>
-                    <li><a href="index.html" data-i18n="nav_home">Home</a></li>
-                    <li class="has-dropdown">
-                        <a href="tours.html" data-i18n="nav_tours">Tours</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="tour-heritage-waterfalls.html">Heritage & Waterfalls</a></li>
-                            <li><a href="tour-elephant-adventure.html">Elephant Adventure</a></li>
-                            <li><a href="tour-mekong-cruise-2day.html">Mekong Cruise (2-Day)</a></li>
-                            <li><a href="tour-nong-khiaw-trekking.html">Nong Khiaw Trekking</a></li>
-                            <li><a href="tours.html">All Tours</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-dropdown">
-                        <a href="car-rentals.html" data-i18n="nav_rentals">Rentals</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="car-rentals.html">Car Rental</a></li>
-                            <li><a href="motorbike-rentals.html">Motorbike Rental</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-dropdown">
-                        <a href="destinations.html" data-i18n="nav_destinations">Destinations</a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-header" data-i18n="nav_top_destinations">Top Destinations</li>
-                            <li class="has-subdropdown">
-                                <a href="destinations.html"
-                                    style="display: flex; justify-content: space-between; align-items: center;"
-                                    data-i18n="dest_lp">Luang Prabang <i class="fas fa-chevron-right"
-                                        style="font-size: 0.7em; margin-left: 8px;"></i></a>
-                                <ul class="dropdown-menu sub-dropdown-menu">
-                                    <li><a href="tour-nong-khiaw-trekking.html" data-i18n="dest_nk">Nong Khiaw</a></li>
-                                    <li><a href="tour-luangprabang-city.html">Luang Prabang City</a></li>
-                                    <li><a href="tour-elephant-adventure.html">Elephant Adventure</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="destinations.html" data-i18n="dest_vt">Vientiane</a></li>
-                            <li><a href="destinations.html" data-i18n="dest_vv">Vang Vieng</a></li>
-                            <li><a href="destinations.html" data-i18n="dest_ps">Pakse</a></li>
-                            <li><a href="destinations.html" data-i18n="dest_tk">Thakhek</a></li>
-                            <li><a href="destinations.html" data-i18n="dest_sv">Luang Namtha</a></li>
-                            <li><a href="destinations.html" data-i18n="dest_cp">Champasak</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="about.html" data-i18n="nav_about">About</a></li>
-                    <li><a href="checkout.html" class="btn btn-primary btn-sm" data-i18n="nav_book">Book Now</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="tours.html">Tours</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="checkout.html" class="btn btn-primary btn-sm">Book Now</a></li>
                 </ul>
             </nav>
 
@@ -221,10 +177,10 @@
                 <i class="fas fa-paper-plane"></i>
             </div>
 
-            <h1 class="success-title" data-i18n="success_title">Booking Request Sent!</h1>
-            <p class="success-subtitle" data-i18n="success_subtitle">Sabaidee! We have received your inquiry.</p>
+            <h1 class="success-title">Booking Request Sent!</h1>
+            <p class="success-subtitle">Sabaidee! We have received your inquiry.</p>
 
-            <p class="success-text" data-i18n="success_msg">
+            <p class="success-text">
                 Your request is being checked by our team. We will contact you shortly via WhatsApp or email to confirm
                 availability and finalize the details.
             </p>
@@ -238,35 +194,62 @@
             <div class="booking-details-box">
                 <div class="detail-row"
                     style="border-bottom: 1px solid #cbd5e1; padding-bottom: 15px; margin-bottom: 15px;">
-                    <span style="font-weight: 600; color: var(--text-main);" data-i18n="success_booking_id">Booking
+                    <span style="font-weight: 600; color: var(--text-main);">Booking
                         ID</span>
                     <strong id="display-booking-id"
                         style="color: var(--secondary); font-size: 1.1rem;">LST-2026-XXXX</strong>
+                </div>
+            </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const displayBookingId = document.getElementById('display-booking-id');
+            const bookingId = localStorage.getItem('current_booking_id') || 'LST-2026-XXXX';
+            if (displayBookingId) displayBookingId.textContent = bookingId;
+
+            const custName = localStorage.getItem('cust_name') || '';
+            const custWA = localStorage.getItem('cust_whatsapp') || '';
+            const prodName = localStorage.getItem('selected_product_name') || '';
+            const date = localStorage.getItem('selected_product_date') || '';
+            const guests = localStorage.getItem('selected_product_guests') || '';
+            const total = localStorage.getItem('due_now_value') || '';
+
+            const waNumber = '8562098457614';
+            let message = `Hello, I am ${custName || 'a guest'}. Booking ID: ${bookingId}`;
+            if (prodName) message += `\nTour: ${prodName}`;
+            if (date) message += `\nDate: ${date}`;
+            if (guests) message += `\nGuests: ${guests}`;
+            if (total) message += `\nTotal: ${total}`;
+            message += `\nEmail: ${localStorage.getItem('cust_email') || ''}`;
+            const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+
+            let timeLeft = 5;
+            const counterEl = document.getElementById('wa-counter');
+            if (counterEl) counterEl.textContent = timeLeft;
+            const countdownInterval = setInterval(() => {
+                timeLeft--;
                 if (counterEl) counterEl.textContent = timeLeft;
                 if (timeLeft <= 0) {
                     clearInterval(countdownInterval);
                     window.location.href = waUrl;
-                    document.getElementById('wa-countdown-box').innerHTML = '<i class="fas fa-check-circle"></i> Redirecting...';
+                    const box = document.getElementById('wa-countdown-box');
+                    if (box) box.innerHTML = '<i class="fas fa-check-circle"></i> Redirecting...';
                 }
             }, 1000);
 
-            // 5. Show Final Confirmation Toast
             setTimeout(() => {
-                showToast('Success!', 'Your booking inquiry was sent successfully.', 'success', 5000);
+                if (typeof showToast === 'function') showToast('Success!', 'Your booking inquiry was sent successfully.', 'success', 5000);
             }, 800);
 
-            // 4. Clear booking session
-            localStorage.removeItem('current_booking_id');
-            localStorage.removeItem('receipt_uploaded');
-            localStorage.removeItem('temp_receipt_base64');
-            localStorage.removeItem('payment_mode');
-            localStorage.removeItem('due_now_value');
-            localStorage.removeItem('balance_value');
-            localStorage.removeItem('cust_name');
-            localStorage.removeItem('cust_whatsapp');
-            localStorage.removeItem('cust_email');
+            const keys = ['current_booking_id', 'receipt_uploaded', 'temp_receipt_base64', 'payment_mode', 'due_now_value', 'balance_value', 'cust_name', 'cust_whatsapp', 'cust_email'];
+            keys.forEach(k => localStorage.removeItem(k));
         });
     </script>
 </body>
 
 </html>
+
+
+
+
