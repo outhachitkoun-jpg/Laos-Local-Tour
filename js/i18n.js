@@ -41,7 +41,7 @@ const translations = {
         "authentic_text": "Join 7.9 million warm-hearted locals in celebrating a culture rooted in peace, community, and the famous 'Bo Pen Nyang' spirit.",
         "about_badge": "🌿 Our Story",
         "about_title": "Born from the Warmth of a Lao Smile",
-        "about_p1": "Laos Smile Trip is a local travel company dedicated to creating unforgettable experiences across the land of a million elephants.",
+        "about_p1": "Laos Dream Destination is a local travel company dedicated to creating unforgettable experiences across the land of a million elephants.",
         "about_p2": "We believe that travel is not just about visiting places—it's about connecting with people and discovering traditions.",
         "mission_title": "💛 Our Mission",
         "mission_text": "\"To provide high-quality travel services while promoting sustainable tourism and supporting the local communities that are the heart of Laos.\"",
@@ -197,7 +197,7 @@ const translations = {
 
         // Success Page
         "success_title": "Booking Confirmed!",
-        "success_subtitle": "Thank you for choosing Laos Smile Trip.",
+        "success_subtitle": "Thank you for choosing Laos Dream Destination.",
         "success_msg": "Your journey is being prepared. Our team will contact you shortly via WhatsApp or email to finalize the details.",
         "success_home_btn": "Back to Home",
         "success_whatsapp_btn": "Message us on WhatsApp",
@@ -319,3 +319,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+

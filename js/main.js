@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
 
     // ========== 📱 WHATSAPP CLICK TRACKING NOTIFIER ==========
     const notifyWhatsAppClick = (url) => {
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const formData = new FormData();
             formData.append('_subject', `New WhatsApp Inquiry Alert! -> ${pageName}`);
-            formData.append('email', 'noreply@laossmiletrip.com');
+            formData.append('email', 'noreply@laosdreamdestination.com');
             formData.append('message', message);
 
             // Append some extra details
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
             formData.append('Page URL', window.location.href);
             formData.append('WhatsApp Destination', url);
 
-            fetch('https://formsubmit.co/ajax/luangprabangsmiletrip@gmail.com', {
+            fetch('https://formsubmit.co/ajax/luangprabangdreamdestination@gmail.com', {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -310,7 +310,7 @@ window.handleInquiry = async (mode, tourName) => {
             formData.append('Message/Notes', notes);
             formData.append('_subject', `New Inquiry: ${tourName} from ${name}`);
 
-            const response = await fetch('https://formsubmit.co/ajax/luangprabangsmiletrip@gmail.com', {
+            const response = await fetch('https://formsubmit.co/ajax/luangprabangdreamdestination@gmail.com', {
                 method: 'POST',
                 body: formData
             });
@@ -398,3 +398,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
