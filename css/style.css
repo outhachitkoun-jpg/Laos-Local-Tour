@@ -330,8 +330,8 @@ img {
 }
 
 .logo-img {
-    height: 50px;
-    width: auto;
+    height: 60px;
+    width: 150px;
     transition: var(--transition-base);
 }
 
@@ -691,7 +691,7 @@ img {
     }
 
     .logo-img {
-        height: 40px;
+        height: 48px;
     }
 
     .lang-current span:last-child {
