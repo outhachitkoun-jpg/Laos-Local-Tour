@@ -114,13 +114,17 @@
                                 </div>
                                 <div>
                                     <label for="selected-guests" class="form-label">Tour Guests *</label>
-                                    <input type="number" id="selected-guests" name="Guests" min="1" value="1" required class="form-control">
+                                    <div class="guest-quantity-controls">
+                                        <button type="button" id="btn-minus" class="btn btn-secondary btn-sm" aria-label="Decrease guests">-</button>
+                                        <input type="number" id="selected-guests" name="Guests" min="1" step="1" inputmode="numeric" pattern="[0-9]*" value="1" required class="form-control">
+                                        <button type="button" id="btn-plus" class="btn btn-secondary btn-sm" aria-label="Increase guests">+</button>
+                                    </div>
                                 </div>
                             </div>
                             <div style="margin-top: 18px; display:flex; align-items:flex-start; gap: 12px;">
                                 <input type="checkbox" id="terms-checkbox" required style="margin-top:6px; width:18px; height:18px;">
                                 <label for="terms-checkbox" style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.4;">
-                                    I agree to the <a href="https://laosgrouptours.la/book-tour/luang-prabang-walking-tour#" target="_blank" style="color: var(--primary); text-decoration: underline;">terms and conditions</a>
+                                    I agree to the <a href="#" target="_blank" style="color: var(--primary); text-decoration: underline;">terms and conditions</a>
                                 </label>
                             </div>
                         </div>
@@ -333,6 +337,25 @@
             ['change', 'input', 'blur'].forEach(eventName => {
                 selectedGuests.addEventListener(eventName, syncGuestSummary);
             });
+
+            const btnMinus = document.getElementById('btn-minus');
+            const btnPlus = document.getElementById('btn-plus');
+
+            if (btnMinus && btnPlus && selectedGuests) {
+                btnMinus.addEventListener('click', () => {
+                    let currentGuests = Math.max(1, parseInt(selectedGuests.value || '1', 10));
+                    if (currentGuests > 1) {
+                        selectedGuests.value = currentGuests - 1;
+                        syncGuestSummary();
+                    }
+                });
+
+                btnPlus.addEventListener('click', () => {
+                    let currentGuests = Math.max(1, parseInt(selectedGuests.value || '1', 10));
+                    selectedGuests.value = currentGuests + 1;
+                    syncGuestSummary();
+                });
+            }
 
             const checkoutForm = document.getElementById('checkout-form');
 
