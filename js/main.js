@@ -1,4 +1,4 @@
-﻿document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', async () => {
     const loadFragment = async (placeholderSelector, sourceUrl, elementSelector) => {
         const placeholder = document.querySelector(placeholderSelector);
         if (!placeholder) return;
@@ -457,7 +457,7 @@ function initializeTourStickyCTA() {
             <span class="price">${price}</span>
             <span class="tour-name">${name}</span>
         </div>
-        <button type="button" class="btn btn-primary btn-sm">Book Now</button>
+        <button type="button" class="btn btn-primary btn-sm btn-book-now">Book Now</button>
     `;
 
     sticky.querySelector('button')?.addEventListener('click', () => {
@@ -469,4 +469,5 @@ function initializeTourStickyCTA() {
 
 // Ensure modal exists on initial load
 document.addEventListener('DOMContentLoaded', createBookingModal);
+
 

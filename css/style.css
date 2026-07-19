@@ -274,6 +274,26 @@ img {
     font-size: 0.82rem;
 }
 
+.btn-book-now {
+    padding: 1px 2px;
+    min-width: auto;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--primary) !important;
+    border: 1px solid rgba(36, 99, 255, 0.95);
+    box-shadow: none;
+}
+
+.btn-book-now:hover {
+    transform: translateY(-1px);
+    background: rgba(36, 99, 255, 0.08);
+    box-shadow: 0 16px 30px rgba(0, 72, 255, 0.18);
+}
+
 .btn-lg {
     padding: 14px 32px;
     font-size: 0.95rem;
