@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             formData.append('Page URL', window.location.href);
             formData.append('WhatsApp Destination', url);
 
-            fetch('https://formsubmit.co/ajax/luangprabangdreamdestination@gmail.com', {
+            fetch('https://formsubmit.co/ajax/laoslocaltour@gmail.com', {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -214,7 +214,7 @@ window.handleInquiry = async (mode, tourName) => {
             formData.append('Message/Notes', notes);
             formData.append('_subject', `New Inquiry: ${tourName} from ${name}`);
 
-            const response = await fetch('https://formsubmit.co/ajax/luangprabangdreamdestination@gmail.com', {
+            const response = await fetch('https://formsubmit.co/ajax/laoslocaltour@gmail.com', {
                 method: 'POST',
                 body: formData
             });
