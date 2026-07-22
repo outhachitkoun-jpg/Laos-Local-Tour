@@ -9,7 +9,9 @@
     <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Flags & Style -->    <link rel="stylesheet" href="css/style.css">    <style>
+    <!-- Flags & Style -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
         .success-container {
             padding-top: 140px;
             padding-bottom: 100px;
@@ -146,7 +148,7 @@
 
 <body class="premium-theme">
 
-        <header class="site-header site-header--glass">
+    <header class="site-header site-header--glass">
         <div class="container nav-bar">
             <div class="logo-block">
                 <a href="index.html" class="logo">
@@ -154,12 +156,12 @@
                 </a>
             </div>
 
-                        <nav class="main-nav" id="main-nav">
+            <nav class="main-nav" id="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="tours.html">Tours</a></li>
                     <li><a href="about.html">About</a></li>
-                    
+
             </nav>
 
             <div class="menu-toggle" id="mobile-menu-btn">
@@ -200,56 +202,51 @@
                 </div>
             </div>
 
-    <script src="js/main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const displayBookingId = document.getElementById('display-booking-id');
-            const bookingId = localStorage.getItem('current_booking_id') || 'LST-2026-XXXX';
-            if (displayBookingId) displayBookingId.textContent = bookingId;
+            <script src="js/main.js"></script>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const displayBookingId = document.getElementById('display-booking-id');
+                    const bookingId = localStorage.getItem('current_booking_id') || 'LST-2026-XXXX';
+                    if (displayBookingId) displayBookingId.textContent = bookingId;
 
-            const custName = localStorage.getItem('cust_name') || '';
-            const custWA = localStorage.getItem('cust_whatsapp') || '';
-            const prodName = localStorage.getItem('selected_product_name') || '';
-            const date = localStorage.getItem('selected_product_date') || '';
-            const guests = localStorage.getItem('selected_product_guests') || '';
-            const total = localStorage.getItem('due_now_value') || '';
+                    const custName = localStorage.getItem('cust_name') || '';
+                    const custWA = localStorage.getItem('cust_whatsapp') || '';
+                    const prodName = localStorage.getItem('selected_product_name') || '';
+                    const date = localStorage.getItem('selected_product_date') || '';
+                    const guests = localStorage.getItem('selected_product_guests') || '';
+                    const total = localStorage.getItem('due_now_value') || '';
 
-            const waNumber = '8562098457614';
-            let message = `Hello, I am ${custName || 'a guest'}. Booking ID: ${bookingId}`;
-            if (prodName) message += `\nTour: ${prodName}`;
-            if (date) message += `\nDate: ${date}`;
-            if (guests) message += `\nGuests: ${guests}`;
-            if (total) message += `\nTotal: ${total}`;
-            message += `\nEmail: ${localStorage.getItem('cust_email') || ''}`;
-            const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+                    const waNumber = '8562096819345';
+                    let message = `Hello, I am ${custName || 'a guest'}. Booking ID: ${bookingId}`;
+                    if (prodName) message += `\nTour: ${prodName}`;
+                    if (date) message += `\nDate: ${date}`;
+                    if (guests) message += `\nGuests: ${guests}`;
+                    if (total) message += `\nTotal: ${total}`;
+                    message += `\nEmail: ${localStorage.getItem('cust_email') || ''}`;
+                    const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
 
-            let timeLeft = 5;
-            const counterEl = document.getElementById('wa-counter');
-            if (counterEl) counterEl.textContent = timeLeft;
-            const countdownInterval = setInterval(() => {
-                timeLeft--;
-                if (counterEl) counterEl.textContent = timeLeft;
-                if (timeLeft <= 0) {
-                    clearInterval(countdownInterval);
-                    window.location.href = waUrl;
-                    const box = document.getElementById('wa-countdown-box');
-                    if (box) box.innerHTML = '<i class="fas fa-check-circle"></i> Redirecting...';
-                }
-            }, 1000);
+                    let timeLeft = 5;
+                    const counterEl = document.getElementById('wa-counter');
+                    if (counterEl) counterEl.textContent = timeLeft;
+                    const countdownInterval = setInterval(() => {
+                        timeLeft--;
+                        if (counterEl) counterEl.textContent = timeLeft;
+                        if (timeLeft <= 0) {
+                            clearInterval(countdownInterval);
+                            window.location.href = waUrl;
+                            const box = document.getElementById('wa-countdown-box');
+                            if (box) box.innerHTML = '<i class="fas fa-check-circle"></i> Redirecting...';
+                        }
+                    }, 1000);
 
-            setTimeout(() => {
-                if (typeof showToast === 'function') showToast('Success!', 'Your booking inquiry was sent successfully.', 'success', 5000);
-            }, 800);
+                    setTimeout(() => {
+                        if (typeof showToast === 'function') showToast('Success!', 'Your booking inquiry was sent successfully.', 'success', 5000);
+                    }, 800);
 
-            const keys = ['current_booking_id', 'receipt_uploaded', 'temp_receipt_base64', 'payment_mode', 'due_now_value', 'balance_value', 'cust_name', 'cust_whatsapp', 'cust_email'];
-            keys.forEach(k => localStorage.removeItem(k));
-        });
-    </script>
+                    const keys = ['current_booking_id', 'receipt_uploaded', 'temp_receipt_base64', 'payment_mode', 'due_now_value', 'balance_value', 'cust_name', 'cust_whatsapp', 'cust_email'];
+                    keys.forEach(k => localStorage.removeItem(k));
+                });
+            </script>
 </body>
 
 </html>
-
-
-
-
-

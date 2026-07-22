@@ -196,7 +196,7 @@ window.handleInquiry = async (mode, tourName) => {
 
     if (mode === 'whatsapp') {
         const encodedMsg = encodeURIComponent(message);
-        const waUrl = `https://wa.me/8562098457614?text=${encodedMsg}`;
+        const waUrl = `https://wa.me/8562096819345?text=${encodedMsg}`;
         window.open(waUrl, '_blank');
         showToast('Opening WhatsApp...', 'Connecting you to our team.', 'success');
     } else {
@@ -334,9 +334,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ========== 🛍️ BOOKING MODAL (Reusable across pages) ==========
 function createBookingModal() {
-        if (document.getElementById('booking-modal')) return;
+    if (document.getElementById('booking-modal')) return;
 
-        const modalHtml = `
+    const modalHtml = `
         <div id="booking-modal" class="booking-modal" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:20000;">
             <div class="booking-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.6);"></div>
             <div class="booking-panel" style="position:relative;background:#fff;border-radius:12px;max-width:760px;width:94%;padding:20px;box-shadow:0 20px 60px rgba(0,0,0,0.4);z-index:20001;">
@@ -364,57 +364,57 @@ function createBookingModal() {
             </div>
         </div>`;
 
-        document.body.insertAdjacentHTML('beforeend', modalHtml);
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
 
-        const modal = document.getElementById('booking-modal');
-        const closeBtn = document.getElementById('booking-close');
-        const overlay = modal.querySelector('.booking-overlay');
+    const modal = document.getElementById('booking-modal');
+    const closeBtn = document.getElementById('booking-close');
+    const overlay = modal.querySelector('.booking-overlay');
 
-        function closeModal() { modal.style.display = 'none'; }
-        closeBtn.addEventListener('click', closeModal);
-        overlay.addEventListener('click', closeModal);
+    function closeModal() { modal.style.display = 'none'; }
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', closeModal);
 
-        // Wire modal buttons
-        document.getElementById('modal-wa').addEventListener('click', () => {
-                const title = document.getElementById('modal-tour-name').textContent;
-                handleInquiry('whatsapp', title);
-        });
-        document.getElementById('modal-email').addEventListener('click', () => {
-                const title = document.getElementById('modal-tour-name').textContent;
-                handleInquiry('email', title);
-        });
-        document.getElementById('modal-checkout').addEventListener('click', () => {
-                // Save to localStorage and go to checkout
-                const title = document.getElementById('modal-tour-name').textContent;
-                const price = document.getElementById('modal-tour-price').textContent;
-                const date = document.getElementById('book-date').value || '';
-                const guests = document.getElementById('book-guests').value || 1;
-                localStorage.setItem('selected_product_name', title);
-                localStorage.setItem('selected_product_price', price);
-                if (date) localStorage.setItem('selected_product_date', date);
-                localStorage.setItem('selected_product_guests', guests);
-                modal.style.display = 'none';
-                window.location.href = 'checkout.html';
-        });
+    // Wire modal buttons
+    document.getElementById('modal-wa').addEventListener('click', () => {
+        const title = document.getElementById('modal-tour-name').textContent;
+        handleInquiry('whatsapp', title);
+    });
+    document.getElementById('modal-email').addEventListener('click', () => {
+        const title = document.getElementById('modal-tour-name').textContent;
+        handleInquiry('email', title);
+    });
+    document.getElementById('modal-checkout').addEventListener('click', () => {
+        // Save to localStorage and go to checkout
+        const title = document.getElementById('modal-tour-name').textContent;
+        const price = document.getElementById('modal-tour-price').textContent;
+        const date = document.getElementById('book-date').value || '';
+        const guests = document.getElementById('book-guests').value || 1;
+        localStorage.setItem('selected_product_name', title);
+        localStorage.setItem('selected_product_price', price);
+        if (date) localStorage.setItem('selected_product_date', date);
+        localStorage.setItem('selected_product_guests', guests);
+        modal.style.display = 'none';
+        window.location.href = 'checkout.html';
+    });
 }
 
 function openBookingModal(name, price) {
-        createBookingModal();
-        const modal = document.getElementById('booking-modal');
-        if (!modal) return;
-        document.getElementById('modal-tour-title').textContent = `Book: ${name}`;
-        document.getElementById('modal-tour-name').textContent = name;
-        document.getElementById('modal-tour-price').textContent = price;
-        // Prefill fields from localStorage if available
-        const savedName = localStorage.getItem('form_cust-name') || '';
-        const savedPhone = localStorage.getItem('form_cust-whatsapp') || '';
-        const savedDate = localStorage.getItem('form_travel-date') || localStorage.getItem('selected_product_date') || '';
-        const savedGuests = localStorage.getItem('selected_product_guests') || 1;
-        document.getElementById('book-name').value = savedName;
-        document.getElementById('book-phone').value = savedPhone;
-        document.getElementById('book-date').value = savedDate;
-        document.getElementById('book-guests').value = savedGuests;
-        modal.style.display = 'flex';
+    createBookingModal();
+    const modal = document.getElementById('booking-modal');
+    if (!modal) return;
+    document.getElementById('modal-tour-title').textContent = `Book: ${name}`;
+    document.getElementById('modal-tour-name').textContent = name;
+    document.getElementById('modal-tour-price').textContent = price;
+    // Prefill fields from localStorage if available
+    const savedName = localStorage.getItem('form_cust-name') || '';
+    const savedPhone = localStorage.getItem('form_cust-whatsapp') || '';
+    const savedDate = localStorage.getItem('form_travel-date') || localStorage.getItem('selected_product_date') || '';
+    const savedGuests = localStorage.getItem('selected_product_guests') || 1;
+    document.getElementById('book-name').value = savedName;
+    document.getElementById('book-phone').value = savedPhone;
+    document.getElementById('book-date').value = savedDate;
+    document.getElementById('book-guests').value = savedGuests;
+    modal.style.display = 'flex';
 }
 
 // ========== 📖 MANIFA PROGRAM DETAILS MODAL & FILTERS ==========
@@ -478,7 +478,7 @@ function openProgramDetailsModal(code) {
                     <button class="btn btn-secondary" onclick="document.getElementById('program-details-modal').style.display='none';openBookingModal('${safeTitle}', '${prog.price}')">
                         <i class="fas fa-calendar-check"></i> Book Now
                     </button>
-                    <button class="btn btn-outline" onclick="window.open('https://wa.me/8562098457614?text=Hi!%20I%20want%20to%20inquire%20about%20${encodeURIComponent(prog.code + ': ' + prog.title)}', '_blank')">
+                    <button class="btn btn-outline" onclick="window.open('https://wa.me/8562096819345?text=Hi!%20I%20want%20to%20inquire%20about%20${encodeURIComponent(prog.code + ': ' + prog.title)}', '_blank')">
                         <i class="fab fa-whatsapp"></i> WhatsApp
                     </button>
                 </div>
