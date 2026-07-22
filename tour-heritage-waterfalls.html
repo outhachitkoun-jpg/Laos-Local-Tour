@@ -19,11 +19,11 @@
     {
         "@context": "https://schema.org/",
         "@type": "Tour",
-        "name": "Heritage & Waterfalls",
-        "description": "Full-day tour of Luang Prabang's temples and Kuang Si Waterfalls.",
+        "name": "Pak Ou Caves & Kuang Si Falls Full-Day",
+        "description": "Full-day tour of Luang Prabang's temples, Pak Ou Caves, and Kuang Si Waterfalls.",
         "image": "images/tours/heritage/1.jpg",
-        "duration": "PT8H",
-        "price": "60",
+        "duration": "PT9H",
+        "price": "52",
         "priceCurrency": "USD",
         "provider": {
             "@type": "TravelAgency",
@@ -35,11 +35,13 @@
     </script>
 
     <!-- Fonts & Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">    <link rel="stylesheet" href="css/style.css"></head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
 
 <body>
 
-        <header class="site-header site-header--glass">
+    <header class="site-header site-header--glass">
         <div class="container nav-bar">
             <div class="logo-block">
                 <a href="index.html" class="logo">
@@ -47,12 +49,12 @@
                 </a>
             </div>
 
-                        <nav class="main-nav" id="main-nav">
+            <nav class="main-nav" id="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="tours.html">Tours</a></li>
+                    <li><a href="tours.html" class="active">Tours</a></li>
                     <li><a href="about.html">About</a></li>
-                    
+                </ul>
             </nav>
 
             <div class="menu-toggle" id="mobile-menu-btn">
@@ -68,13 +70,11 @@
         <section class="tour-hero"
             style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('images/about laos/Mekong-cruise-laos2.jpg') center/cover;">
             <div class="container">
-                <a href="tours.html"
-                    style="color: white; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 20px; display: inline-block; opacity: 0.9; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">&larr;
-                    Back to Tours</a>
+                <a href="tours.html" class="tour-hero-back">&larr; Back to Tours</a>
                 <h1>Pak Ou Caves & Kuang Si Falls</h1>
-                <p>9 Hours • Mekong Cruise & Turquoise Waterfalls</p>
-                <div style="margin-top:18px;">
-                    <button onclick="bookProduct('Pak Ou Caves &amp; Kuang Si Falls', '$52')" class="btn btn-primary btn-book-now">Book Now</button>
+                <div class="tour-hero-subtitle">
+                    <span class="tour-badge-pill">9 Hours</span>
+                    <span><i class="fas fa-ship"></i> Mekong Cruise & Turquoise Waterfalls</span>
                 </div>
             </div>
         </section>
@@ -82,189 +82,143 @@
         <div class="container tour-grid">
             <div class="tour-info">
                 <h2>Tour Overview</h2>
-                <div
-                    style="background: #f8f9fa; padding: 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid #e9ecef;">
-                    <h3 style="margin-top: 0; font-size: 1.2rem; margin-bottom: 10px; color: #0b1a23;">✨ Highlights</h3>
-                    <ul style="list-style: none; padding: 0; margin: 0; color: #555;">
-                        <li style="margin-bottom: 8px;">🔸 <strong>Mekong River:</strong> Scenic cruise witnessing rural
-                            life and traditional fishermen.</li>
-                        <li style="margin-bottom: 8px;">🔸 <strong>Pak Ou Caves:</strong> Discover thousands of Buddha
-                            statues in spiritual limestone caves.</li>
-                        <li style="margin-bottom: 8px;">🔸 <strong>Whisky Village:</strong> Visit Ban Xang Hai to see
-                            traditional rice wine making.</li>
-                        <li style="margin-bottom: 0;">🔸 <strong>Kuang Si Falls:</strong> Swim in the famous turquoise
-                            pools and visit the Bear Rescue Center.</li>
+                <div class="tour-highlight-box">
+                    <h3>✨ Highlights</h3>
+                    <ul class="tour-highlight-list">
+                        <li><i class="fas fa-ship"></i> <span><strong>Mekong River:</strong> Scenic cruise witnessing rural life and traditional fishermen.</span></li>
+                        <li><i class="fas fa-place-of-worship"></i> <span><strong>Pak Ou Caves:</strong> Discover thousands of Buddha statues in spiritual limestone caves.</span></li>
+                        <li><i class="fas fa-wine-bottle"></i> <span><strong>Whisky Village:</strong> Visit Ban Xang Hai to see traditional rice wine making.</span></li>
+                        <li><i class="fas fa-water"></i> <span><strong>Kuang Si Falls:</strong> Swim in the famous turquoise pools and visit the Bear Rescue Center.</span></li>
                     </ul>
                 </div>
 
-                <p>Experience the ultimate Luang Prabang combo. This journey traces the lifeblood of Laos along the
-                    Mekong River to the sacred Pak Ou Caves, journeys through traditional craft villages, and culminates
-                    at the breathtaking Kuang Si Waterfalls.</p>
+                <p>Experience the ultimate Luang Prabang combo. This journey traces the lifeblood of Laos along the Mekong River to the sacred Pak Ou Caves, journeys through traditional craft villages, and culminates at the breathtaking Kuang Si Waterfalls.</p>
 
-                <section style="margin-bottom: 50px;">
-                    <div class="grid grid--2-col" style="gap: 30px;">
-                        <div
-                            style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
-                            <h3
-                                style="margin-top: 0; color: var(--primary); display: flex; align-items: center; gap: 10px;">
+                <section style="margin-top: 35px; margin-bottom: 40px;">
+                    <div class="grid grid--2-col" style="gap: 25px;">
+                        <div class="tour-info-card">
+                            <h3 style="color: var(--primary);">
                                 <i class="fas fa-info-circle"></i> Quick Info
                             </h3>
-                            <ul style="list-style: none; padding: 0;">
-                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                                    <i class="fas fa-clock" style="color: #64748b;"></i> <span><strong>Time:</strong>
-                                        08:30 AM - 04:30 PM Full Day</span>
+                            <ul class="tour-info-list">
+                                <li>
+                                    <i class="fas fa-clock"></i>
+                                    <span><strong>Time:</strong> 08:30 AM - 17:30 PM (Full Day)</span>
                                 </li>
-                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                                    <i class="fas fa-map-marker-alt" style="color: #64748b;"></i>
-                                    <span><strong>Route:</strong> Pak Ou Caves → Whiskey Village → Kuang Si Falls</span>
+                                <li>
+                                    <i class="fas fa-route"></i>
+                                    <span><strong>Route:</strong> Mekong Boat → Pak Ou Caves → Whisky Village → Kuang Si Falls</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-utensils"></i>
+                                    <span><strong>Lunch:</strong> Riverside Buffet Lunch included</span>
                                 </li>
                             </ul>
                         </div>
 
-                        <div
-                            style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
-                            <h3 style="margin-top: 0; color: #f59e0b; display: flex; align-items: center; gap: 10px;">
+                        <div class="tour-info-card">
+                            <h3 style="color: #f59e0b;">
                                 <i class="fas fa-suitcase"></i> Prepare for Trip
                             </h3>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.9rem;">
-                                <span>👗 Modest clothing (for temples)</span>
-                                <span>🩱 Swimwear & Towel</span>
-                                <span>🕶️ Sunglasses & Sunblock</span>
-                                <span>👟 Walking shoes</span>
-                                <span>🧴 Insect repellent</span>
-                                <span>📷 Fully charged camera</span>
+                            <div class="prep-grid">
+                                <div class="prep-item">👗 Modest clothing (temples)</div>
+                                <div class="prep-item">🩱 Swimwear & Towel</div>
+                                <div class="prep-item">🕶️ Sunblock & Sunglasses</div>
+                                <div class="prep-item">👟 Walking shoes</div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <h2 style="margin-top: 40px;">Pricing & Details</h2>
-                <section style="margin-bottom: 50px;">
-                    <div class="grid grid--2-col" style="gap: 30px;">
-                        <div
-                            style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
-                            <h3
-                                style="margin-top: 0; color: var(--primary); display: flex; align-items: center; gap: 10px;">
-                                <i class="fas fa-info-circle"></i> Quick Info
-                            </h3>
-                            <ul style="list-style: none; padding: 0;">
-                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                                    <i class="fas fa-clock" style="color: #64748b;"></i> <span><strong>Time:</strong>
-                                        08:30 - 18:30 Full Day</span>
-                                </li>
-                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                                    <i class="fas fa-map-marker-alt" style="color: #64748b;"></i>
-                                    <span><strong>Highlights:</strong> Elephant Camp + Kuang Si Waterfalls</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div
-                            style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
-                            <h3 style="margin-top: 0; color: #f59e0b; display: flex; align-items: center; gap: 10px;">
-                                <i class="fas fa-suitcase"></i> What to Bring
-                            </h3>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.9rem;">
-                                <span>🩱 Swimwear & Towel</span>
-                                <span>👟 Proper walking shoes (for stairs)</span>
-                                <span>🕶️ Sunglasses & Sunblock</span>
-                                <span>🧴 Insect repellent</span>
-                                <span>📷 Fully charged camera</span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <div style="overflow-x: auto; margin-bottom: 30px;">
-                    <table
-                        style="width: 100%; border-collapse: collapse; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-                        <thead style="background: #0b1a23; color: white;">
+                <h2 style="margin-top: 40px; margin-bottom: 20px;">Pricing & Details</h2>
+                <div class="pricing-table-wrap">
+                    <table class="pricing-table">
+                        <thead>
                             <tr>
-                                <th style="padding: 15px; text-align: left;">Group Size</th>
-                                <th style="padding: 15px; text-align: left;">Price Per Person</th>
+                                <th>Group Size</th>
+                                <th>Price Per Person</th>
                             </tr>
                         </thead>
-                        <tbody style="background: white;">
-                            <tr style="border-bottom: 1px solid #eee;">
-                                <td style="padding: 15px; color: #333; font-weight: 600;">Group Tour</td>
-                                <td style="padding: 15px; color: #25D366; font-weight: 800;">$52</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid #eee;">
-                                <td style="padding: 15px; color: #333; font-weight: 600;">Private (Small Group)</td>
-                                <td style="padding: 15px; color: #25D366; font-weight: 800;">From $139</td>
+                        <tbody>
+                            <tr>
+                                <td><strong>Group Tour</strong></td>
+                                <td><span class="price-tag">$52</span></td>
                             </tr>
                             <tr>
-                                <td style="padding: 15px; color: #333; font-weight: 600;">4+ People</td>
-                                <td style="padding: 15px; color: #25D366; font-weight: 800;">$45</td>
+                                <td><strong>Private Tour (2-3 People)</strong></td>
+                                <td><span class="price-tag">$139</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Private Tour (4+ People)</strong></td>
+                                <td><span class="price-tag">$45</span></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div
-                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 30px;">
-                    <div>
-                        <h3
-                            style="color: #25D366; border-bottom: 2px solid #25D366; padding-bottom: 10px; display: inline-block;">
-                            Included</h3>
-                        <ul style="margin-top: 15px; list-style: none; padding: 0;">
-                            <li style="margin-bottom: 10px;">✓ Round-trip Transfers</li>
-                            <li style="margin-bottom: 10px;">✓ Mekong River Boat Trip</li>
-                            <li style="margin-bottom: 10px;">✓ All Entrance Fees</li>
-                            <li style="margin-bottom: 10px;">✓ Buffet Lunch & Water</li>
-                            <li style="margin-bottom: 10px;">✓ English Speaking Guide</li>
+                <div class="inc-exc-grid">
+                    <div class="inc-box">
+                        <h3>Included</h3>
+                        <ul class="inc-exc-list">
+                            <li><i class="fas fa-check-circle"></i> Round-trip Hotel Transfers</li>
+                            <li><i class="fas fa-check-circle"></i> Mekong River Boat Trip</li>
+                            <li><i class="fas fa-check-circle"></i> All Entrance Fees</li>
+                            <li><i class="fas fa-check-circle"></i> Buffet Lunch & Drinking Water</li>
+                            <li><i class="fas fa-check-circle"></i> English Speaking Guide</li>
                         </ul>
                     </div>
-                    <div>
-                        <h3
-                            style="color: #e74c3c; border-bottom: 2px solid #e74c3c; padding-bottom: 10px; display: inline-block;">
-                            Excluded</h3>
-                        <ul style="margin-top: 15px; list-style: none; padding: 0;">
-                            <li style="margin-bottom: 10px;">✗ Beverages & Alcohol</li>
-                            <li style="margin-bottom: 10px;">✗ Personal Expenses</li>
+                    <div class="exc-box">
+                        <h3>Excluded</h3>
+                        <ul class="inc-exc-list">
+                            <li><i class="fas fa-times-circle"></i> Soft Drinks & Alcohol</li>
+                            <li><i class="fas fa-times-circle"></i> Personal Expenses & Tips</li>
                         </ul>
-                    </div>
-
-                    <div
-                        style="background: #fdf2f2; padding: 20px; border-radius: 12px; margin-bottom: 30px; border: 1px solid #fee2e2;">
-                        <h3 style="margin-top: 0; font-size: 1.1rem; color: #991b1b;">⚠️ Suitability & Preparation</h3>
-                        <p style="margin-bottom: 10px; font-size: 0.95rem;">• <strong>Not suitable for:</strong> People
-                            prone to seasickness (Mekong cruise can be 1.5 - 2 hours).</p>
-                        <p style="margin-bottom: 0; font-size: 0.95rem;">• <strong>What to bring:</strong> Comfortable
-                            shoes, swimwear, towel, and a change of clothes.</p>
                     </div>
                 </div>
 
-                <h2>Itinerary</h2>
-                <div class="itinerary-item">
-                    <h3>08:15 AM - 08:45 AM - Hotel Pickup</h3>
-                    <p>Start your day with a convenient pickup from your accommodation in Luang Prabang center.</p>
+                <h2 style="margin-top: 40px; margin-bottom: 10px;">Itinerary</h2>
+                <div class="itinerary-timeline">
+                    <div class="itinerary-card">
+                        <span class="itinerary-time">08:15 AM - 08:45 AM</span>
+                        <h3>Hotel Pickup</h3>
+                        <p>Start your day with a convenient pickup from your accommodation in Luang Prabang center.</p>
+                    </div>
+                    <div class="itinerary-card">
+                        <span class="itinerary-time">Morning</span>
+                        <h3>Mekong Cruise & Caves</h3>
+                        <p>Board a traditional boat for a cruise on the Mekong. Stop at <strong>Ban Xang Hai (Whisky Village)</strong> to see the rice wine process. Continue to the <strong>Pak Ou Caves</strong> to explore the thousands of Buddha images.</p>
+                    </div>
+                    <div class="itinerary-card">
+                        <span class="itinerary-time">12:30 PM</span>
+                        <h3>Buffet Lunch</h3>
+                        <p>Enjoy a delicious local buffet lunch at a riverside restaurant / elephant camp area.</p>
+                    </div>
+                    <div class="itinerary-card">
+                        <span class="itinerary-time">Afternoon</span>
+                        <h3>Kuang Si Waterfalls</h3>
+                        <p>Drive to the breathtaking <strong>Kuang Si Waterfalls</strong>. Enjoy swimming in the turquoise pools and visit the Bear Rescue Center.</p>
+                    </div>
+                    <div class="itinerary-card">
+                        <span class="itinerary-time">Late Afternoon</span>
+                        <h3>Hmong Village & Return</h3>
+                        <p>Visit <strong>Ban Na Uan</strong>, a traditional Hmong village. Arrive back in Luang Prabang between 5:30 PM and 6:00 PM.</p>
+                    </div>
                 </div>
-                <div class="itinerary-item">
-                    <h3>Morning - Mekong Cruise & Caves</h3>
-                    <p>Board a traditional boat for a cruise on the Mekong. Stop at <strong>Ban Xang Hai (Whisky
-                            Village)</strong> to see the rice wine process. Continue to the <strong>Pak Ou
-                            Caves</strong> to explore the thousands of Buddha images.</p>
-                </div>
-                <div class="itinerary-item">
-                    <h3>12:30 PM - Buffet Lunch</h3>
-                    <p>Enjoy a delicious local buffet lunch at a riverside restaurant/elephant camp area.</p>
-                </div>
-                <div class="itinerary-item">
-                    <h3>Afternoon - Kuang Si Waterfalls</h3>
-                    <p>Drive to the breathtaking <strong>Kuang Si Waterfalls</strong>. Enjoy swimming in the turquoise
-                        pools and visit the Bear Rescue Center.</p>
-                </div>
-                <div class="itinerary-item">
-                    <h3>Late Afternoon - Hmong Village & Return</h3>
-                    <p>Visit <strong>Ban Na Uan</strong>, a traditional Hmong village. Arrive back in Luang Prabang
-                        between 5:30 PM and 6:00 PM.</p>
+
+                <div class="tour-cta-card">
+                    <div>
+                        <h3>Book Pak Ou Caves & Kuang Si Combo</h3>
+                        <p>Experience the highlights of Luang Prabang in one comprehensive day trip.</p>
+                    </div>
+                    <button type="button" class="btn btn-secondary btn-lg" onclick="openBookingModal('Pak Ou Caves & Kuang Si Falls Full-Day', '$52')">
+                        <i class="fas fa-calendar-check"></i> Book This Tour
+                    </button>
                 </div>
             </div>
         </div>
     </main>
 
-        <footer class="site-footer">
+    <footer class="site-footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
@@ -310,22 +264,7 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Float -->
-    <a class="whatsapp-float" href="https://wa.me/8562098457614" target="_blank" rel="noopener">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="white">
-            <path
-                d="M16.003 2.667c-7.363 0-13.333 5.97-13.333 13.333 0 2.35.613 4.646 1.781 6.674L2.667 29.333l6.84-1.76c1.96 1.07 4.17 1.63 6.493 1.63 7.364 0 13.333-5.97 13.333-13.333s-5.969-13.333-13.333-13.333zm0 24c-2.073 0-4.1-.523-5.897-1.514l-.423-.239-4.06 1.046 1.083-3.951-.275-.406c-1.112-1.646-1.699-3.563-1.699-5.478 0-5.546 4.514-10.06 10.06-10.06s10.06 4.514 10.06 10.06-4.514 10.06-10.06 10.06zm5.523-7.526c-.302-.151-1.79-.883-2.068-.984-.278-.101-.48-.151-.681.151-.201.302-.782.984-.959 1.186-.177.201-.353.227-.655.076-.302-.151-1.275-.471-2.429-1.503-.898-.8-1.503-1.789-1.68-2.091-.177-.302-.019-.466.133-.617.137-.136.302-.353.453-.53.151-.177.201-.302.302-.504.101-.201.051-.378-.025-.529-.076-.151-.681-1.64-.933-2.247-.245-.587-.494-.508-.681-.517-.176-.008-.378-.01-.58-.01-.201 0-.53.076-.806.378-.277.302-1.057 1.032-1.057 2.515 0 1.483 1.081 2.914 1.232 3.117.151.201 2.129 3.252 5.164 4.558.722.312 1.284.498 1.722.639.723.23 1.38.197 1.9.119.579-.086 1.79-.731 2.043-1.437.252-.706.252-1.31.176-1.437-.076-.126-.277-.201-.58-.353z" />
-        </svg>
-    </a>
-
     <script src="js/main.js"></script>
-    <!-- Inquiry handled by main.js -->
 </body>
 
 </html>
-
-
-
-
-
-

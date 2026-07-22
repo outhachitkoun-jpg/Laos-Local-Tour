@@ -35,11 +35,13 @@
     </script>
 
     <!-- Fonts & Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">    <link rel="stylesheet" href="css/style.css"></head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
 
 <body>
 
-        <header class="site-header site-header--glass">
+    <header class="site-header site-header--glass">
         <div class="container nav-bar">
             <div class="logo-block">
                 <a href="index.html" class="logo">
@@ -47,12 +49,12 @@
                 </a>
             </div>
 
-                        <nav class="main-nav" id="main-nav">
+            <nav class="main-nav" id="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="tours.html">Tours</a></li>
+                    <li><a href="tours.html" class="active">Tours</a></li>
                     <li><a href="about.html">About</a></li>
-                    
+                </ul>
             </nav>
 
             <div class="menu-toggle" id="mobile-menu-btn">
@@ -68,182 +70,128 @@
         <section class="tour-hero"
             style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('images/tours/nong-khiaw/hero.png') center/cover;">
             <div class="container">
-                <a href="tours.html"
-                    style="color: white; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 20px; display: inline-block; opacity: 0.9; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">&larr;
-                    Back to Tours</a>
+                <a href="tours.html" class="tour-hero-back">&larr; Back to Tours</a>
                 <h1>Nong Khiaw: 2-Day Trekking, Camping & Kayaking</h1>
-                <p>Nong Khiaw &bull; 4.6/5 Stars Rating &bull; Adventure & Nature</p>
+                <div class="tour-hero-subtitle">
+                    <span class="tour-badge-pill">2 Days / 1 Night</span>
+                    <span><i class="fas fa-hiking"></i> Phakao Peak, Muang Ngoi & Nam Ou River</span>
+                </div>
             </div>
         </section>
 
         <div class="container tour-grid">
             <div class="tour-info">
                 <h2>Tour Overview</h2>
-                <div
-                    style="background: #f8f9fa; padding: 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid #e9ecef;">
-                    <h3 style="margin-top: 0; font-size: 1.2rem; margin-bottom: 10px; color: #0b1a23;">✨ Highlights</h3>
-                    <ul style="list-style: none; padding: 0; margin: 0; color: #555;">
-                        <li style="margin-bottom: 8px;">🔸 <strong>Breathtaking Views:</strong> Trek to Phakao Peak for
-                            panoramic views of the surrounding mountains.</li>
-                        <li style="margin-bottom: 8px;">🔸 <strong>Night Under Stars:</strong> Enjoy a traditional
-                            Laotian dinner and sleep under the stars or in a tent.</li>
-                        <li style="margin-bottom: 8px;">🔸 <strong>Remote Villages:</strong> Cruise up the Nam Ou River
-                            to the blissful remote village of Muang Ngoi.</li>
-                        <li style="margin-bottom: 8px;">🔸 <strong>Nam Ou Kayaking:</strong> Kayak along the Ou River,
-                            taking in views of the jungle and wildlife.</li>
-                        <li style="margin-bottom: 0;">🔸 <strong>Stunning Landscapes:</strong> Immerse yourself in the
-                            extraordinary landscapes of Nong Khiaw over 2 days.</li>
+                <div class="tour-highlight-box">
+                    <h3>✨ Highlights</h3>
+                    <ul class="tour-highlight-list">
+                        <li><i class="fas fa-mountain"></i> <span><strong>Breathtaking Views:</strong> Trek to Phakao Peak for panoramic views of surrounding mountains.</span></li>
+                        <li><i class="fas fa-campground"></i> <span><strong>Night Under Stars:</strong> Enjoy a traditional Laotian dinner and sleep under the stars or in a tent.</span></li>
+                        <li><i class="fas fa-water"></i> <span><strong>Remote Villages:</strong> Cruise up the Nam Ou River to the blissful remote village of Muang Ngoi.</span></li>
+                        <li><i class="fas fa-water"></i> <span><strong>Nam Ou Kayaking:</strong> Kayak along the Ou River, taking in views of the jungle and wildlife.</span></li>
                     </ul>
                 </div>
 
-                <!-- Gallery Section -->
-                <div class="tour-gallery"
-                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px;">
-                    <a href="images/tours/nong-khiaw/hero.png" data-lightbox="nong-khiaw-gallery"
-                        data-title="Phakao Peak">
-                        <img src="images/tours/nong-khiaw/hero.png" alt="Phakao Peak Views"
-                            style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;">
-                    </a>
-                    <a href="images/tours/nong-khiaw/camp.png" data-lightbox="nong-khiaw-gallery"
-                        data-title="Camping Under the Stars">
-                        <img src="images/tours/nong-khiaw/camp.png" alt="Mountain Camping"
-                            style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;">
-                    </a>
-                    <a href="images/tours/nong-khiaw/kayak.png" data-lightbox="nong-khiaw-gallery"
-                        data-title="Kayaking the Nam Ou River">
-                        <img src="images/tours/nong-khiaw/kayak.png" alt="Nam Ou Kayaking"
-                            style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;">
-                    </a>
-                </div>
+                <p>Begin an extraordinary 2-day journey deep into the mountains of northern Laos. Experience the thrilling ascent of Phakao Peak, sleep out beneath the twinkling universe, row across the pristine Nam Ou River, and explore small tribal villages nestled among towering karst hills.</p>
 
-                <p>Begin an extraordinary 2-day journey deep into the mountains of northern Laos. Experience the
-                    thrilling ascent of Phakao Peak, sleep out beneath the twinkling universe, row across the pristine
-                    Nam Ou River, and explore small tribal villages nestled among towering karst hills.</p>
-
-                <section style="margin-bottom: 50px;">
-                    <div class="grid grid--2-col" style="gap: 30px;">
-                        <div
-                            style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
-                            <h3
-                                style="margin-top: 0; color: var(--primary); display: flex; align-items: center; gap: 10px;">
+                <section style="margin-top: 35px; margin-bottom: 40px;">
+                    <div class="grid grid--2-col" style="gap: 25px;">
+                        <div class="tour-info-card">
+                            <h3 style="color: var(--primary);">
                                 <i class="fas fa-info-circle"></i> Quick Info
                             </h3>
-                            <ul style="list-style: none; padding: 0;">
-                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                                    <i class="fas fa-clock" style="color: #64748b;"></i>
+                            <ul class="tour-info-list">
+                                <li>
+                                    <i class="fas fa-clock"></i>
                                     <span><strong>Duration:</strong> 2 Days, 1 Night</span>
                                 </li>
-                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                                    <i class="fas fa-map-marker-alt" style="color: #64748b;"></i>
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i>
                                     <span><strong>Location:</strong> Nong Khiaw & Muang Ngoi</span>
                                 </li>
-                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                                <li>
                                     <i class="fas fa-star" style="color: #f59e0b;"></i>
-                                    <span><strong>Rating:</strong> 4.6 / 5 (White Rabbit Tours)</span>
+                                    <span><strong>Rating:</strong> 4.6 / 5 (Adventure Rating)</span>
                                 </li>
                             </ul>
                         </div>
 
-                        <div
-                            style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
-                            <h3 style="margin-top: 0; color: #f59e0b; display: flex; align-items: center; gap: 10px;">
+                        <div class="tour-info-card">
+                            <h3 style="color: #f59e0b;">
                                 <i class="fas fa-suitcase"></i> What to Bring
                             </h3>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.9rem;">
-                                <span>👟 Hiking shoes</span>
-                                <span>🧥 Warm clothing</span>
-                                <span>📷 Camera</span>
-                                <span>🔦 Flashlight</span>
-                                <span>🧻 Toiletries</span>
-                                <span>⛺ Tent (provided but flexible)</span>
+                            <div class="prep-grid">
+                                <div class="prep-item">👟 Sturdy hiking shoes</div>
+                                <div class="prep-item">🧥 Warm clothing for night</div>
+                                <div class="prep-item">🔦 Flashlight / Headlamp</div>
+                                <div class="prep-item">📷 Camera & Powerbank</div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <div
-                    style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; border-radius: 0 8px 8px 0; margin-bottom: 40px;">
-                    <h4 style="margin-top: 0; color: #856404; display: flex; align-items: center; gap: 8px;">
-                        <i class="fas fa-exclamation-triangle"></i> Know before you go
-                    </h4>
-                    <p style="margin: 0; font-size: 0.95rem; color: #664d03; line-height: 1.5;">
-                        The tour involves physical activities such as trekking and kayaking. Participants should be
-                        prepared for an overnight stay in the mountains. <strong>Not suitable for:</strong> People with
-                        back problems, mobility impairments, heart problems, or respiratory issues.
-                    </p>
-                </div>
-
-                <div
-                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 30px;">
-                    <div>
-                        <h3
-                            style="color: #25D366; border-bottom: 2px solid #25D366; padding-bottom: 10px; display: inline-block;">
-                            Included</h3>
-                        <ul style="margin-top: 15px; list-style: none; padding: 0;">
-                            <li style="margin-bottom: 10px;">✓ 3 hr mountain trek to Phakao Peak</li>
-                            <li style="margin-bottom: 10px;">✓ Panoramic sunset / sunrise views</li>
-                            <li style="margin-bottom: 10px;">✓ Traditional Laos dinner</li>
-                            <li style="margin-bottom: 10px;">✓ Under the stars / tent accommodation</li>
-                            <li style="margin-bottom: 10px;">✓ 1.5 hour traditional long boat cruise</li>
-                            <li style="margin-bottom: 10px;">✓ Sopkong, Muang Ngoi & Cave visits</li>
-                            <li style="margin-bottom: 10px;">✓ Lunch at That Mok waterfall</li>
-                            <li style="margin-bottom: 10px;">✓ Kayaking on the Ou River</li>
-                            <li style="margin-bottom: 10px;">✓ Beer lao & Guide tip</li>
+                <div class="inc-exc-grid">
+                    <div class="inc-box">
+                        <h3>Included</h3>
+                        <ul class="inc-exc-list">
+                            <li><i class="fas fa-check-circle"></i> 3 hr mountain trek to Phakao Peak</li>
+                            <li><i class="fas fa-check-circle"></i> Panoramic sunset & sunrise views</li>
+                            <li><i class="fas fa-check-circle"></i> Traditional Laos dinner</li>
+                            <li><i class="fas fa-check-circle"></i> Under the stars / tent accommodation</li>
+                            <li><i class="fas fa-check-circle"></i> 1.5 hour traditional long boat cruise</li>
+                            <li><i class="fas fa-check-circle"></i> Sopkong, Muang Ngoi & Cave visits</li>
+                            <li><i class="fas fa-check-circle"></i> Lunch at That Mok waterfall</li>
+                            <li><i class="fas fa-check-circle"></i> Kayaking on the Ou River</li>
                         </ul>
                     </div>
-                    <div>
-                        <h3
-                            style="color: #e74c3c; border-bottom: 2px solid #e74c3c; padding-bottom: 10px; display: inline-block;">
-                            Excluded</h3>
-                        <ul style="margin-top: 15px; list-style: none; padding: 0;">
-                            <li style="margin-bottom: 10px;">✗ Additional snacks or souvenirs</li>
-                            <li style="margin-bottom: 10px;">✗ High levels of personal medical insurance</li>
-                            <li style="margin-bottom: 10px;">✗ Personal / Hotel expenditures before check-in</li>
+                    <div class="exc-box">
+                        <h3>Excluded</h3>
+                        <ul class="inc-exc-list">
+                            <li><i class="fas fa-times-circle"></i> Additional snacks or souvenirs</li>
+                            <li><i class="fas fa-times-circle"></i> Personal medical insurance</li>
+                            <li><i class="fas fa-times-circle"></i> Personal / Hotel expenditures before check-in</li>
                         </ul>
                     </div>
                 </div>
 
-                <h2>Full Itinerary</h2>
-                <div class="itinerary-item">
-                    <h3 style="color: var(--secondary);">Day 1: Trekking & Camping Adventure</h3>
-                    <div style="margin-left: 15px; border-left: 2px dashed #eee; padding-left: 20px;">
-                        <p><strong>02:00 PM:</strong> Depart from Heaven Backpackers Stay & Hostel in Nong Khiaw.</p>
-                        <p><strong>02:15 PM:</strong> Begin a 3-hour trek through lush jungle trails to reach 360 Phakao
-                            Peak, the highest viewpoint in Nong Khiaw, offering panoramic views of the surrounding
-                            limestone mountains.</p>
-                        <p><strong>05:30 PM:</strong> Enjoy a beautiful evening watching the sunset over the incredible
-                            landscape.</p>
-                        <p><strong>07:00 PM:</strong> Indulge in a delicious, freshly prepared Laotian dinner.</p>
-                        <p><strong>Night:</strong> Camp activities and overnight stay in a tent or under the pristine
-                            starry night.</p>
+                <h2 style="margin-top: 40px; margin-bottom: 10px;">Full Itinerary</h2>
+                <div class="itinerary-timeline">
+                    <div class="itinerary-card">
+                        <span class="itinerary-time">Day 1: 14:00 PM - Night</span>
+                        <h3>Trekking & Camping Adventure</h3>
+                        <p><strong>14:00 PM:</strong> Depart from Nong Khiaw.<br>
+                        <strong>14:15 PM:</strong> Begin a 3-hour trek through lush jungle trails to reach 360 Phakao Peak.<br>
+                        <strong>17:30 PM:</strong> Watch the sunset over the mountain range.<br>
+                        <strong>19:00 PM:</strong> Indulge in a fresh Laotian dinner.<br>
+                        <strong>Night:</strong> Camp under the stars in a mountain tent.</p>
+                    </div>
+
+                    <div class="itinerary-card">
+                        <span class="itinerary-time">Day 2: 06:00 AM - 16:30 PM</span>
+                        <h3>River Cruising, Villages & Kayaking</h3>
+                        <p><strong>06:00 AM:</strong> Sunrise over the sea of clouds, followed by breakfast.<br>
+                        <strong>09:30 AM:</strong> Descend back to Nong Khiaw.<br>
+                        <strong>10:00 AM:</strong> Long-tail boat up the Nam Ou River to Muang Ngoi.<br>
+                        <strong>13:00 PM:</strong> Boat to Sopkong Village, trek to That Mok waterfall for lunch.<br>
+                        <strong>15:30 PM:</strong> Kayak down the spectacular Ou River.<br>
+                        <strong>16:30 PM:</strong> Return to Nong Khiaw.</p>
                     </div>
                 </div>
-                <div class="itinerary-item">
-                    <h3 style="color: var(--secondary);">Day 2: River Crusing, Villages & Kayaking</h3>
-                    <div style="margin-left: 15px; border-left: 2px dashed #eee; padding-left: 20px;">
-                        <p><strong>06:00 AM:</strong> Wake up for sunrise and witness breathtaking views over the sea of
-                            clouds.</p>
-                        <p><strong>07:30 AM:</strong> Enjoy breakfast and coffee before descending back down the
-                            mountain.</p>
-                        <p><strong>09:30 AM:</strong> Arrive back in Nong Khiaw town.</p>
-                        <p><strong>10:00 AM:</strong> Cruise in a traditional long boat for 1.5 hours up the scenic Nam
-                            Ou River to the wonderfully remote Muang Ngoi village.</p>
-                        <p><strong>11:30 AM:</strong> Explore a historic cave and Phanoi viewpoint. Appreciate views of
-                            village life and riverbanks. Free time to explore Muang Ngoi.</p>
-                        <p><strong>01:00 PM:</strong> Boat to Sopkong Village (a Khmu farming village). Trek for an hour
-                            through rice paddies, jungle, and sloping hills.</p>
-                        <p><strong>02:00 PM:</strong> Lunch at the stunning That Mok waterfall. Relax, swim, in natural
-                            fresh pools.</p>
-                        <p><strong>03:30 PM:</strong> Safety briefing and an introduction to kayaking. Kayak for an hour
-                            down the spectacular Ou River.</p>
-                        <p><strong>04:30 PM:</strong> Arrive back at Nong Khiaw to conclude the tour.</p>
+
+                <div class="tour-cta-card">
+                    <div>
+                        <h3>Book Nong Khiaw 2-Day Adventure</h3>
+                        <p>Immerse yourself in mountain peaks, remote villages, and river kayaking.</p>
                     </div>
+                    <button type="button" class="btn btn-secondary btn-lg" onclick="openBookingModal('Nong Khiaw: 2-Day Trekking, Camping & Kayaking Tour', '$70')">
+                        <i class="fas fa-calendar-check"></i> Book This Adventure
+                    </button>
                 </div>
             </div>
         </div>
     </main>
 
-        <footer class="site-footer">
+    <footer class="site-footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
@@ -289,22 +237,7 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Float -->
-    <a class="whatsapp-float" href="https://wa.me/8562098457614" target="_blank" rel="noopener">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="white">
-            <path
-                d="M16.003 2.667c-7.363 0-13.333 5.97-13.333 13.333 0 2.35.613 4.646 1.781 6.674L2.667 29.333l6.84-1.76c1.96 1.07 4.17 1.63 6.493 1.63 7.364 0 13.333-5.97 13.333-13.333s-5.969-13.333-13.333-13.333zm0 24c-2.073 0-4.1-.523-5.897-1.514l-.423-.239-4.06 1.046 1.083-3.951-.275-.406c-1.112-1.646-1.699-3.563-1.699-5.478 0-5.546 4.514-10.06 10.06-10.06s10.06 4.514 10.06 10.06-4.514 10.06-10.06 10.06zm5.523-7.526c-.302-.151-1.79-.883-2.068-.984-.278-.101-.48-.151-.681.151-.201.302-.782.984-.959 1.186-.177.201-.353.227-.655.076-.302-.151-1.275-.471-2.429-1.503-.898-.8-1.503-1.789-1.68-2.091-.177-.302-.019-.466.133-.617.137-.136.302-.353.453-.53.151-.177.201-.302.302-.504.101-.201.051-.378-.025-.529-.076-.151-.681-1.64-.933-2.247-.245-.587-.494-.508-.681-.517-.176-.008-.378-.01-.58-.01-.201 0-.53.076-.806.378-.277.302-1.057 1.032-1.057 2.515 0 1.483 1.081 2.914 1.232 3.117.151.201 2.129 3.252 5.164 4.558.722.312 1.284.498 1.722.639.723.23 1.38.197 1.9.119.579-.086 1.79-.731 2.043-1.437.252-.706.252-1.31.176-1.437-.076-.126-.277-.201-.58-.353z" />
-        </svg>
-    </a>
-
     <script src="js/main.js"></script>
-    <!-- Inquiry handled by main.js -->
 </body>
 
 </html>
-
-
-
-
-
-

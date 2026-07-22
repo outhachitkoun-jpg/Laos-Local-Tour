@@ -417,6 +417,96 @@ function openBookingModal(name, price) {
         modal.style.display = 'flex';
 }
 
+// ========== 📖 MANIFA PROGRAM DETAILS MODAL & FILTERS ==========
+function openProgramDetailsModal(code) {
+    if (!window.MANIFA_PROGRAMS) return;
+    const prog = window.MANIFA_PROGRAMS.find(p => p.code.toLowerCase() === code.toLowerCase() || p.id === code.toLowerCase());
+    if (!prog) return;
+
+    let modal = document.getElementById('program-details-modal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'program-details-modal';
+        modal.style.cssText = 'position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:20000;padding:20px;';
+        document.body.appendChild(modal);
+    }
+
+    const highlightsHtml = prog.highlights.map(h => `<li style="margin-bottom:8px;"><i class="fas fa-check-circle" style="color:#10b981;margin-right:8px;"></i>${h}</li>`).join('');
+    const inclusionsHtml = prog.inclusions.map(inc => `<li style="margin-bottom:6px;"><i class="fas fa-check" style="color:var(--primary);margin-right:8px;"></i>${inc}</li>`).join('');
+    const scheduleHtml = prog.schedule ? prog.schedule.map(s => `
+        <div style="margin-bottom:12px;padding-left:14px;border-left:3px solid var(--primary-soft);">
+            <strong style="color:var(--primary);font-size:0.85rem;">${s.time}</strong>
+            <p style="margin:2px 0 0;font-size:0.92rem;color:#334155;">${s.text}</p>
+        </div>
+    `).join('') : '';
+
+    const safeTitle = prog.title.replace(/'/g, "\\'");
+
+    modal.innerHTML = `
+        <div class="booking-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.65);backdrop-filter:blur(4px);" onclick="document.getElementById('program-details-modal').style.display='none'"></div>
+        <div class="program-modal-panel">
+            <button class="program-modal-close" onclick="document.getElementById('program-details-modal').style.display='none'">&times;</button>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+                <span class="badge badge-paylater" style="background:#0f172a;color:#fcd34d;font-weight:800;">${prog.code}</span>
+                <span style="font-size:0.85rem;color:#64748b;font-weight:600;">${prog.duration}</span>
+                ${prog.seasonalNotice ? `<span style="font-size:0.75rem;background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:12px;font-weight:700;">${prog.seasonalNotice}</span>` : ''}
+            </div>
+            <h2 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--primary-alt);margin-bottom:16px;">${prog.title}</h2>
+            
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;">
+                <div>
+                    <h4 style="font-family:'Outfit',sans-serif;color:var(--primary);margin-bottom:10px;">✨ Program Highlights</h4>
+                    <ul style="list-style:none;padding:0;font-size:0.92rem;">${highlightsHtml}</ul>
+                </div>
+                <div>
+                    <h4 style="font-family:'Outfit',sans-serif;color:var(--primary);margin-bottom:10px;">✓ Inclusions</h4>
+                    <ul style="list-style:none;padding:0;font-size:0.88rem;">${inclusionsHtml}</ul>
+                </div>
+            </div>
+
+            ${scheduleHtml ? `
+                <h4 style="font-family:'Outfit',sans-serif;color:var(--primary);margin-bottom:12px;">📅 Itinerary & Schedule</h4>
+                <div style="margin-bottom:24px;background:#f8fafc;padding:16px;border-radius:12px;border:1px solid #e2e8f0;">${scheduleHtml}</div>
+            ` : ''}
+
+            <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid #e2e8f0;padding-top:20px;flex-wrap:wrap;gap:16px;">
+                <div>
+                    <span style="font-size:0.8rem;color:#64748b;display:block;">Price per person</span>
+                    <strong style="font-size:1.6rem;color:#10b981;">${prog.price}</strong>
+                </div>
+                <div style="display:flex;gap:10px;">
+                    <button class="btn btn-secondary" onclick="document.getElementById('program-details-modal').style.display='none';openBookingModal('${safeTitle}', '${prog.price}')">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </button>
+                    <button class="btn btn-outline" onclick="window.open('https://wa.me/8562098457614?text=Hi!%20I%20want%20to%20inquire%20about%20${encodeURIComponent(prog.code + ': ' + prog.title)}', '_blank')">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    modal.style.display = 'flex';
+}
+
+function filterTours(category, btnElement) {
+    const cards = document.querySelectorAll('.tour-card-premium');
+    cards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (category === 'all' || cat === category) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    if (btnElement) {
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        btnElement.classList.add('active');
+    }
+}
+
+
 function initializeTourStickyCTA() {
     const hero = document.querySelector('.tour-hero');
     if (!hero) return;

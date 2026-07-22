@@ -35,11 +35,13 @@
     </script>
 
     <!-- Fonts & Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">    <link rel="stylesheet" href="css/style.css"></head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
 
 <body>
 
-        <header class="site-header site-header--glass">
+    <header class="site-header site-header--glass">
         <div class="container nav-bar">
             <div class="logo-block">
                 <a href="index.html" class="logo">
@@ -47,12 +49,12 @@
                 </a>
             </div>
 
-                        <nav class="main-nav" id="main-nav">
+            <nav class="main-nav" id="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="tours.html">Tours</a></li>
+                    <li><a href="tours.html" class="active">Tours</a></li>
                     <li><a href="about.html">About</a></li>
-                    
+                </ul>
             </nav>
 
             <div class="menu-toggle" id="mobile-menu-btn">
@@ -68,152 +70,156 @@
         <section class="tour-hero"
             style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('images/tours/heritage/4.jpg') center/cover;">
             <div class="container">
-                <a href="tours.html"
-                    style="color: white; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 20px; display: inline-block; opacity: 0.9; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">&larr;
-                    Back to Tours</a>
+                <a href="tours.html" class="tour-hero-back">&larr; Back to Tours</a>
                 <h1>Luang Prabang City Tour</h1>
-                <p>Full Day • Temples, Heritage & Culture</p>
+                <div class="tour-hero-subtitle">
+                    <span class="tour-badge-pill">Full Day</span>
+                    <span><i class="fas fa-landmark"></i> Temples, Heritage & Culture</span>
+                </div>
             </div>
         </section>
 
         <div class="container tour-grid">
             <div class="tour-info">
                 <h2>Tour Overview</h2>
-                <div
-                    style="background: #f8f9fa; padding: 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid #e9ecef;">
-                    <h3 style="margin-top: 0; font-size: 1.2rem; margin-bottom: 10px; color: #0b1a23;">✨ Highlights</h3>
-                    <ul style="list-style: none; padding: 0; margin: 0; color: #555;">
-                        <li style="margin-bottom: 8px;">🔸 <strong>Royal Palace:</strong> Explore the former king's
-                            residence and national museum.</li>
-                        <li style="margin-bottom: 8px;">🔸 <strong>Wat Xieng Thong:</strong> The most beautiful and
-                            historic temple in Luang Prabang.</li>
-                        <li style="margin-bottom: 8px;">🔸 <strong>Wat Mai & Wat Visoun:</strong> Discover the unique
-                            architecture of ancient Buddhist temples.</li>
-                        <li style="margin-bottom: 0;">🔸 <strong>Phousi Hill:</strong> Climb the 328 steps for a
-                            stunning panoramic sunset view of the city and rivers.</li>
+                
+                <div class="tour-highlight-box">
+                    <h3>✨ Highlights</h3>
+                    <ul class="tour-highlight-list">
+                        <li><i class="fas fa-crown"></i> <span><strong>Royal Palace:</strong> Explore the former king's residence and national museum.</span></li>
+                        <li><i class="fas fa-gopuram"></i> <span><strong>Wat Xieng Thong:</strong> The most beautiful and historic temple in Luang Prabang.</span></li>
+                        <li><i class="fas fa-archway"></i> <span><strong>Wat Mai & Wat Visoun:</strong> Discover the unique architecture of ancient Buddhist temples.</span></li>
+                        <li><i class="fas fa-mountain"></i> <span><strong>Phousi Hill:</strong> Climb the 328 steps for a stunning panoramic sunset view of the city and rivers.</span></li>
                     </ul>
                 </div>
 
-                <p>Discover the heart and soul of Laos in Luang Prabang, a UNESCO World Heritage site known for its
-                    outstanding cultural preservation. This full-day guided city tour taking you through ancient
-                    temples, colonial architecture, and the rich history of the former Lane Xang kingdom.</p>
+                <p>Discover the heart and soul of Laos in Luang Prabang, a UNESCO World Heritage site known for its outstanding cultural preservation. This full-day guided city tour takes you through ancient temples, colonial architecture, and the rich history of the former Lane Xang kingdom.</p>
 
-                <section style="margin-bottom: 50px;">
-                    <div class="grid grid--2-col" style="gap: 30px;">
-                        <div
-                            style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
-                            <h3
-                                style="margin-top: 0; color: var(--primary); display: flex; align-items: center; gap: 10px;">
+                <section style="margin-top: 35px; margin-bottom: 40px;">
+                    <div class="grid grid--2-col" style="gap: 25px;">
+                        <div class="tour-info-card">
+                            <h3 style="color: var(--primary);">
                                 <i class="fas fa-info-circle"></i> Quick Info
                             </h3>
-                            <ul style="list-style: none; padding: 0;">
-                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                                    <i class="fas fa-clock" style="color: #64748b;"></i> <span><strong>Time:</strong>
-                                        08:30 AM - 05:00 PM Full Day</span>
+                            <ul class="tour-info-list">
+                                <li>
+                                    <i class="fas fa-clock"></i>
+                                    <span><strong>Time:</strong> 08:30 AM - 05:00 PM (Full Day)</span>
                                 </li>
-                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                                    <i class="fas fa-map-marker-alt" style="color: #64748b;"></i>
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i>
                                     <span><strong>Location:</strong> Luang Prabang City Center</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-user-shield"></i>
+                                    <span><strong>Guide:</strong> Licensed English-Speaking Guide</span>
                                 </li>
                             </ul>
                         </div>
 
-                        <div
-                            style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
-                            <h3 style="margin-top: 0; color: #f59e0b; display: flex; align-items: center; gap: 10px;">
+                        <div class="tour-info-card">
+                            <h3 style="color: #f59e0b;">
                                 <i class="fas fa-suitcase"></i> Prepare for Trip
                             </h3>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.9rem;">
-                                <span>👗 Modest clothing (cover shoulders and knees for temples)</span>
-                                <span>👟 Walking shoes</span>
-                                <span>🕶️ Sunglasses & Hat</span>
-                                <span>📷 Fully charged camera</span>
+                            <div class="prep-grid">
+                                <div class="prep-item">👗 Modest attire (shoulders/knees)</div>
+                                <div class="prep-item">👟 Comfortable walking shoes</div>
+                                <div class="prep-item">🕶️ Sunhat & Sunglasses</div>
+                                <div class="prep-item">📷 Camera & Sunscreen</div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <h2 style="margin-top: 40px;">Pricing & Details</h2>
-                <div style="overflow-x: auto; margin-bottom: 30px;">
-                    <table
-                        style="width: 100%; border-collapse: collapse; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-                        <thead style="background: #0b1a23; color: white;">
+                <h2 style="margin-top: 40px; margin-bottom: 20px;">Pricing & Details</h2>
+                <div class="pricing-table-wrap">
+                    <table class="pricing-table">
+                        <thead>
                             <tr>
-                                <th style="padding: 15px; text-align: left;">Group Size</th>
-                                <th style="padding: 15px; text-align: left;">Price Per Person</th>
+                                <th>Group Size</th>
+                                <th>Price Per Person</th>
                             </tr>
                         </thead>
-                        <tbody style="background: white;">
-                            <tr style="border-bottom: 1px solid #eee;">
-                                <td style="padding: 15px; color: #333; font-weight: 600;">Private (1-2 People)</td>
-                                <td style="padding: 15px; color: #25D366; font-weight: 800;">$55</td>
+                        <tbody>
+                            <tr>
+                                <td><strong>Private Tour (1-2 People)</strong></td>
+                                <td><span class="price-tag">$55</span></td>
                             </tr>
                             <tr>
-                                <td style="padding: 15px; color: #333; font-weight: 600;">Group (3+ People)</td>
-                                <td style="padding: 15px; color: #25D366; font-weight: 800;">$40</td>
+                                <td><strong>Group Tour (3+ People)</strong></td>
+                                <td><span class="price-tag">$40</span></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div
-                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 30px;">
-                    <div>
-                        <h3
-                            style="color: #25D366; border-bottom: 2px solid #25D366; padding-bottom: 10px; display: inline-block;">
-                            Included</h3>
-                        <ul style="margin-top: 15px; list-style: none; padding: 0;">
-                            <li style="margin-bottom: 10px;">✓ Hotel Pickup & Drop-off</li>
-                            <li style="margin-bottom: 10px;">✓ English Speaking Guide</li>
-                            <li style="margin-bottom: 10px;">✓ All Temple & Museum Entrance Fees</li>
-                            <li style="margin-bottom: 10px;">✓ Air-conditioned Minivan</li>
-                            <li style="margin-bottom: 10px;">✓ Drinking Water</li>
+                <div class="inc-exc-grid">
+                    <div class="inc-box">
+                        <h3>Included</h3>
+                        <ul class="inc-exc-list">
+                            <li><i class="fas fa-check-circle"></i> Hotel Pickup & Drop-off</li>
+                            <li><i class="fas fa-check-circle"></i> English Speaking Guide</li>
+                            <li><i class="fas fa-check-circle"></i> All Temple & Museum Entrance Fees</li>
+                            <li><i class="fas fa-check-circle"></i> Air-conditioned Minivan</li>
+                            <li><i class="fas fa-check-circle"></i> Drinking Water</li>
                         </ul>
                     </div>
-                    <div>
-                        <h3
-                            style="color: #e74c3c; border-bottom: 2px solid #e74c3c; padding-bottom: 10px; display: inline-block;">
-                            Excluded</h3>
-                        <ul style="margin-top: 15px; list-style: none; padding: 0;">
-                            <li style="margin-bottom: 10px;">✗ Lunch & Meals</li>
-                            <li style="margin-bottom: 10px;">✗ Personal Expenses & Tips</li>
+                    <div class="exc-box">
+                        <h3>Excluded</h3>
+                        <ul class="inc-exc-list">
+                            <li><i class="fas fa-times-circle"></i> Lunch & Personal Meals</li>
+                            <li><i class="fas fa-times-circle"></i> Personal Expenses & Tips</li>
                         </ul>
                     </div>
                 </div>
 
-                <h2>Itinerary</h2>
-                <div class="itinerary-item">
-                    <h3>08:30 AM - Morning Temples & Royal Palace</h3>
-                    <p>Start your day with a visit to the <strong>Royal Palace Museum</strong>, which hosts a range of
-                        interesting artifacts. Next, head to the magnificent <strong>Wat Xieng Thong</strong> with its
-                        roofs sweeping low to the ground, which represents classical Laotian architecture.</p>
+                <h2 style="margin-top: 40px; margin-bottom: 10px;">Itinerary</h2>
+                <div class="itinerary-timeline">
+                    <div class="itinerary-card">
+                        <span class="itinerary-time">08:30 AM</span>
+                        <h3>Morning Temples & Royal Palace</h3>
+                        <p>Start your day with a visit to the <strong>Royal Palace Museum</strong>, which hosts a range of interesting artifacts. Next, head to the magnificent <strong>Wat Xieng Thong</strong> with its roofs sweeping low to the ground, which represents classical Laotian architecture.</p>
+                    </div>
+
+                    <div class="itinerary-card">
+                        <span class="itinerary-time">10:30 AM</span>
+                        <h3>Historic Wats</h3>
+                        <p>Visit <strong>Wat Mai</strong> and <strong>Wat Visoun</strong>, the oldest temple in the city, known for its iconic Watermelon Stupa.</p>
+                    </div>
+
+                    <div class="itinerary-card">
+                        <span class="itinerary-time">12:00 PM</span>
+                        <h3>Lunch Break</h3>
+                        <p>Free time to grab lunch at a local restaurant by the Mekong river. (Lunch is at your own expense).</p>
+                    </div>
+
+                    <div class="itinerary-card">
+                        <span class="itinerary-time">02:00 PM</span>
+                        <h3>Culture & Craft</h3>
+                        <p>Visit the <strong>Traditional Arts and Ethnology Centre (TAEC)</strong> to learn about the diverse ethnic groups of Laos and their traditional crafts.</p>
+                    </div>
+
+                    <div class="itinerary-card">
+                        <span class="itinerary-time">04:00 PM</span>
+                        <h3>Phousi Hill Sunset</h3>
+                        <p>Climb the 328 steps of <strong>Mount Phousi</strong> for an incredible panoramic view of the city and watch the sunset over the Mekong River. After descending, you have the option to explore the famous Night Market.</p>
+                    </div>
                 </div>
-                <div class="itinerary-item">
-                    <h3>10:30 AM - Historic Wats</h3>
-                    <p>Visit <strong>Wat Mai</strong> and <strong>Wat Visoun</strong>, the oldest temple in the city,
-                        known for its iconic Watermelon Stupa.</p>
-                </div>
-                <div class="itinerary-item">
-                    <h3>12:00 PM - Lunch Break</h3>
-                    <p>Free time to grab lunch at a local restaurant by the Mekong river. (Lunch is at your own
-                        expense).</p>
-                </div>
-                <div class="itinerary-item">
-                    <h3>02:00 PM - Culture & Craft</h3>
-                    <p>Visit the <strong>Traditional Arts and Ethnology Centre (TAEC)</strong> to learn about the
-                        diverse ethnic groups of Laos and their traditional crafts.</p>
-                </div>
-                <div class="itinerary-item">
-                    <h3>04:00 PM - Phousi Hill Sunset</h3>
-                    <p>Climb the 328 steps of <strong>Mount Phousi</strong> for an incredible panoramic view of the city
-                        and watch the sunset over the Mekong River. After descending, you have the option to explore the
-                        famous Night Market.</p>
+
+                <div class="tour-cta-card">
+                    <div>
+                        <h3>Ready to Explore Luang Prabang?</h3>
+                        <p>Book your full-day heritage tour today with authentic local guides.</p>
+                    </div>
+                    <button type="button" class="btn btn-secondary btn-lg" onclick="openBookingModal('Luang Prabang City Tour', '$45')">
+                        <i class="fas fa-calendar-check"></i> Book This Tour
+                    </button>
                 </div>
             </div>
         </div>
     </main>
 
-        <footer class="site-footer">
+    <footer class="site-footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
@@ -260,13 +266,6 @@
     </footer>
 
     <script src="js/main.js"></script>
-    <!-- Inquiry handled by main.js -->
 </body>
 
 </html>
-
-
-
-
-
-
